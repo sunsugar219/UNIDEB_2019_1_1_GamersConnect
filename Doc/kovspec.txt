@@ -5,7 +5,14 @@ Követelmény specifikáció
 Az E-Sport világában fontos az online közösségépítés, viszont egyelőre ez
 csak szétszórtan van biztosítva. Egy olyan platform létrehozására van
 szükség, amely bármely E-Sportoló számára biztosít kapcsolatot a többi
-E-Sportolóval. 
+E-Sportolóval. Ehhez szükség van arra, hogy megoszthatóak legyenek a 
+közelgő streamek, bajnokságok és a sportolók egyéb részvételi szándéka,
+hogy így vonzanak támogatókat, új csapattársakat, közönséget. Ehhez egy
+közösségi média alkalmazás biztosítása lenne a legcélszerűbb, ahol a 
+hírfolyam a felhasználók közelgő eseményeit mutatná. A felhasználók
+közötti kapcsolat biztosítására szükség van egyirányú (követő) és
+kétirányú (ismerős) kapcsolatokra is, hogy a már hírnévvel rendelkező 
+E-Sportolók privát szférája is biztosítva legyen. 
 
 2. Jelenlegi helyzet
 
