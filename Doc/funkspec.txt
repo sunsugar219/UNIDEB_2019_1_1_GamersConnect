@@ -14,6 +14,17 @@ kapcsolatokra tervezzük bontani, így a privát szférát is biztosítjuk
 a felhasználók számára.
 
 2. Jelenlegi helyzet
+- Jelenleg az e-sportolók közötti kommunikáció játékon vagy platformon
+belül biztosított. Egy olyan rendszerre merült fel igény, amelyet minden egyes 
+e-sportoló használhatna, játéktól függetlenül. 
+- Hogy a játék közben nyújtott teljesítményt fokozzuk, univerzális platformon
+történő szervezést kívánunk biztosítani, hogy az eseményt érintő információ minél
+szélesebb körében elérhető legyen. Jelenleg a korlátolt körű elérhetőség a 
+játék közben biztosított teljesítményt jelentősen ronthatja.
+- Az azonnali reagálás lehetőségét Android applikációval kívánjuk biztosítani,
+hiszen ennek segítségével az e-sportolók közötti kommunikáció javulna.
+Jelenleg az azonnali reagálás lehetősége platformtól függ, hiszen a 
+legtöbb e-sporttal kapcsolatos kommunikáció csak PC-n történik.
 
 3. Vágyálom rendszer
 
