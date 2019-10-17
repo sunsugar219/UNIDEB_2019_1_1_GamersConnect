@@ -20,7 +20,9 @@ biztosított, nincs egy olyan rendszer, amelyet minden egyes e-sportoló
 használhatna, játéktól függetlenül. 
 - Ez a játék közben biztosított teljesítményt ronthatja, hiszen csapattagok hiányozhatnak a nem eléggé univerzális platformokon történő
 szervezés következtében.
-- 
+- Mivel az e-sportolók közötti kommunikáció általában a játék által
+biztosított platformon van megoldva, ezért az azonnali reagálás 
+valószínűsége csökken mobil eszközök nélkül. 
 
 3. Vágyálom rendszer
 
