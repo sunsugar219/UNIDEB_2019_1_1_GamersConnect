@@ -15,16 +15,23 @@ kétirányú (ismerős) kapcsolatokra is, hogy a már hírnévvel rendelkező
 E-Sportolók privát szférája is biztosítva legyen. 
 
 2. Jelenlegi helyzet
-- Jelenleg az e-sportolók közötti kommunikáció játékon vagy platformon belül
-biztosított, nincs egy olyan rendszer, amelyet minden egyes e-sportoló
-használhatna, játéktól függetlenül. 
-- Ez a játék közben biztosított teljesítményt ronthatja, hiszen csapattagok hiányozhatnak a nem eléggé univerzális platformokon történő
+- Jelenleg az e-sportolók közötti kommunikáció játékon vagy platformon
+belül biztosított, nincs egy olyan rendszer, amelyet minden egyes 
+e-sportoló használhatna, játéktól függetlenül. 
+- Ez a játék közben biztosított teljesítményt ronthatja, hiszen
+csapattagok hiányozhatnak a nem eléggé univerzális platformokon történő
 szervezés következtében.
 - Mivel az e-sportolók közötti kommunikáció általában a játék által
 biztosított platformon van megoldva, ezért az azonnali reagálás 
 valószínűsége csökken mobil eszközök nélkül. 
 
 3. Vágyálom rendszer
+- Szükség van egy központi kommunikációs rendszerre az e-sportolók között, 
+hogy játéktól függetlenül bárkivel lehessen kommunikálni, esetleg új 
+csapattagot találni.
+- Ennek révén egyes események szervezését időben el lehet kezdeni, és
+minden lehetséges e-sportoló részvételére lehet számítani.
+- Szükséges a hordozható kommunikáció biztosítása mobil alkalmazás révén.
 
 4. Jelenlegi folyamatok
 
