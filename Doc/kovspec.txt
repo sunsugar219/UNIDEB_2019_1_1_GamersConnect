@@ -15,6 +15,9 @@ kétirányú (ismerős) kapcsolatokra is, hogy a már hírnévvel rendelkező
 E-Sportolók privát szférája is biztosítva legyen. 
 
 2. Jelenlegi helyzet
+Jelenleg az e-sportolók közötti kommunikáció játékon vagy platformon belül
+biztosított, nincs egy olyan rendszer, amelyet minden egyes e-sportoló
+használhatna, játéktól függetlenül. 
 
 3. Vágyálom rendszer
 
