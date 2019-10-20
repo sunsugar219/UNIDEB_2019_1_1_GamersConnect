@@ -25,6 +25,18 @@ szervezés következtében.
 biztosított platformon van megoldva, ezért az azonnali reagálás 
 valószínűsége csökken mobil eszközök nélkül. 
 
+-Jelenlegi helyzetünkben használhatóságról nem sokat tudunk megemlíteni, hiszen 
+napjainkban még nem elérhető egy konkrét közösségi média amihez minden e-sportoló 
+könnyen hozzáférhet. Ha egy e-sportoló bizonyos információt szeretne megosztani 
+bármilyen játékkal kapcsolatban, akkor ezt egy megszokott, mindennap használt közösségi 
+oldalon teheti meg. Persze a kommunikáció a játékosok között a jelenlegi helyzetben is 
+megvalósulhat, akár a játékon belül, vagy akár egy közösségi oldalon való beszélgetésben.
+Az utóbbinak hátránya van, mivel az információ átadás és a reagálás nem valósul meg a játék 
+pillanatában, hiszen tudjuk, hogy egy játékos sem szívesen szakítja meg a játékot, ha egy 
+üzenete érkezik. Ezért pillanatnyilag a játékon belüli kommunikációt használják, mert az a 
+gyorsabb megoldás és a reagálási idő is rövidebb.
+
+
 3. Vágyálom rendszer
 - Szükség van egy központi kommunikációs rendszerre az e-sportolók között, 
 hogy játéktól függetlenül bárkivel lehessen kommunikálni, esetleg új 
