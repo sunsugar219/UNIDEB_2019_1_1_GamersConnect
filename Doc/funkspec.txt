@@ -15,20 +15,31 @@ a felhasználók számára.
 
 2. Jelenlegi helyzet
 - Jelenleg az e-sportolók közötti kommunikáció játékon vagy platformon
-belül biztosított. Egy olyan rendszerre merült fel igény, amelyet minden egyes 
+belül biztosított. Egy olyan rendszert kívánunk fejleszteni, amelyet minden egyes 
 e-sportoló használhatna, játéktól függetlenül. 
-- Hogy a játék közben nyújtott teljesítményt fokozzuk, univerzális platformon
-történő szervezést kívánunk biztosítani, hogy az eseményt érintő információ minél
-szélesebb körében elérhető legyen. Jelenleg a korlátolt körű elérhetőség a 
-játék közben biztosított teljesítményt jelentősen ronthatja.
+- Jelenleg a korlátolt körű elérhetőség a játék közben biztosított 
+teljesítményt jelentősen ronthatja, mivel nem biztos, hogy a 
+szükséges információ mindenkihez eljut időben. 
 - Az azonnali reagálás lehetőségét Android applikációval kívánjuk biztosítani,
 hiszen ennek segítségével az e-sportolók közötti kommunikáció javulna.
 Jelenleg az azonnali reagálás lehetősége platformtól függ, hiszen a 
 legtöbb e-sporttal kapcsolatos kommunikáció csak PC-n történik.
 
 3. Vágyálom rendszer
+- Az általunk fejleszteni kívánt rendszert játéktól függetlenül minden egyes 
+e-sportoló használhatná. Ennek révén esetleg új játékok is népszerűbbé
+válhatnának, az e-sportolók száma is növekedhetne.
+- Hogy a játék közben nyújtott teljesítményt fokozzuk, univerzális platformon
+történő szervezést kívánunk biztosítani, hogy az eseményt érintő információ minél
+szélesebb körében elérhető legyen. 
+- Az azonnali reagálás lehetőségét Android applikációval kívánjuk biztosítani,
+hiszen ennek segítségével az e-sportolók közötti kommunikáció javulna.
+Egyes eseményekhez történő hozzászólásokkal, chat funkcióval és létrehozható
+csoportokkal, eseményekkel tervezzük biztosítani a széles platformot és 
+az azonnali reagálás lehetőségét, melynek révén a játék közben nyújtott 
+teljesítmény jelentős javulását várjuk felfedezni.
 
 4. Jelenlegi folyamatok
 
 5. Igényelt üzleti feladatok
-
+52 a vége
