@@ -2,11 +2,28 @@ Gamers Connect
 Rendszerterv
 
 A rendszer célja
+Az E-Sport világában fontos az online közösségépítés, viszont egyelőre ez
+csak szétszórtan van biztosítva. Egy olyan platform létrehozása a célunk, 
+amely bármely E-Sportoló számára biztosít kapcsolatot a többi E-Sportolóval, 
+a választott játéktól függetlenül, akár több sportágban is. Ehhez tervezzük
+egy olyan közösségi média applikáció létrehozását, melynek az üzenőfalán
+megosztásra kerülhetnek közelgő streamek, bajnokságok és a sportolók egyéb 
+részvételi szándéka, hogy így vonzanak támogatókat, új csapattársakat, 
+közönséget. A felhasználók közötti kapcsolatot egyirányú, illetve kétirányú
+kapcsolatokra tervezzük bontani, így a privát szférát is biztosítjuk
+a felhasználók számára.
 
 Projekt terv
 -Projektszerepkörök, felelősségek
 -Projektmunkások és felelősségeik
--ÜtemtervoMérföldkövek
+-Ütemterv
+-Mérföldkövek
+Felhasználói felületek létrehozása: november 4.
+Navigáció és menü: november 11.
+Adatbázis létrehozása: november 18.
+Adatbázis lekérdezések megírása: november 25.
+Egyéb szükséges Java kód megírása: december 2.
+Szükséges változtatások, program végleges verziója: december 9.
 
 Üzleti folyamatok modellje
 -Üzleti szereplők
