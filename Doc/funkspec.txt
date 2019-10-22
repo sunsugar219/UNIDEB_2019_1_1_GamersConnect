@@ -31,15 +31,19 @@ e-sportoló használhatná. Ennek révén esetleg új játékok is népszerűbb�
 válhatnának, az e-sportolók száma is növekedhetne.
 - Hogy a játék közben nyújtott teljesítményt fokozzuk, univerzális platformon
 történő szervezést kívánunk biztosítani, hogy az eseményt érintő információ minél
-szélesebb körében elérhető legyen. 
+szélesebb körében elérhető legyen. A közösségi média erre a célra tökéletes
+választásnak tűnik, hiszen ez platformot nyújtana minden e-sportoló számára,
+aktuálisan játszott e-sporttól függetlenül. A széleskörű elérhetőség
+biztosításával olyan teljesítmény érhető el, amelyet a korábbi korlátolt,
+viszonylag szűk ismeretségi körben nem lehetett volna megvalósítani.
 - Az azonnali reagálás lehetőségét Android applikációval kívánjuk biztosítani,
 hiszen ennek segítségével az e-sportolók közötti kommunikáció javulna.
 Egyes eseményekhez történő hozzászólásokkal, chat funkcióval és létrehozható
 csoportokkal, eseményekkel tervezzük biztosítani a széles platformot és 
 az azonnali reagálás lehetőségét, melynek révén a játék közben nyújtott 
-teljesítmény jelentős javulását várjuk felfedezni.
+teljesítmény jelentős javulását reméljük.
 
 4. Jelenlegi folyamatok
 
 5. Igényelt üzleti feladatok
-52 a vége
+
