@@ -51,8 +51,15 @@ Később igény szerint bővíthető a támogatott platformok köre PC(Böngész
 platformokkal.
 -A szoftver ingyenesen elérhető lesz a play áruházból, opcionális fizetős 
 tartalmakkal.
+-A szoftvernek a fejlesztők számára könnyen karbantarthatónak kell lennie, 
+egyes részeinek platform-függetlennek kell lennie.
 
 4. Jelenlegi folyamatok
+-Jelenleg a streamerek, e-sportolók csak a közösségi médiát, esetleg a streameléshez 
+használt platformot használják (ha lehetséges) kommunikációra, egy erre 
+specifikált platform szükséges, és hatékonyabb is lehet.
 
 5. Igényelt üzleti feladatok
+-A szoftver újrahasznosítása más programban nem várható, ellenben részei a támogatott
+platformpk bővítése esetén felhasználhatóak.
 
