@@ -1,4 +1,4 @@
-Gamers Connect
+﻿Gamers Connect
 Követelmény specifikáció
 
 1.Vezetői összefoglaló
@@ -42,8 +42,15 @@ gyorsabb megoldás és a reagálási idő is rövidebb.
 hogy játéktól függetlenül bárkivel lehessen kommunikálni, esetleg új 
 csapattagot találni.
 - Ennek révén egyes események szervezését időben el lehet kezdeni, és
-minden lehetséges e-sportoló részvételére lehet számítani.
+minden lehetséges e-sportoló részvételére lehet számítani, a potenciális
+nézők pedig be tudják ütemezni az időbeosztásukba a stream nézését.
 - Szükséges a hordozható kommunikáció biztosítása mobil alkalmazás révén.
+- A szoftver a lehető legtöbb android verzióval kompatibilis lesz, így a szoftvert
+minden, Android operációs rendszert haszáló mobiltulajdonos képes lesz használni.
+Később igény szerint bővíthető a támogatott platformok köre PC(Böngésző)/IOS(alkalmazás)
+platformokkal.
+-A szoftver ingyenesen elérhető lesz a play áruházból, opcionális fizetős 
+tartalmakkal.
 
 4. Jelenlegi folyamatok
 
