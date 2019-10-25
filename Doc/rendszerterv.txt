@@ -33,10 +33,12 @@ Szükséges változtatások, program végleges verziója: december 9.
 Követelmények
 -Funkcionális követelmények:
 - Adatok megfelelő tárolása
+- Adatok megfelelő leképezése
 - Adatok valós idejű változása
 - Adatok szinkronizációja
 - Adatoknak megfelelően UI változása
 - Felhasználók közötti kommunikáció a tervezettnek megfelelő működése
+- Az alkalmazás és a Firebase közötti megfelelő kapcsolat
 
 -Nem funkcionális követelmények:
 - Könnyű olvashatóság
