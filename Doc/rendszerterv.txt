@@ -14,16 +14,39 @@ kapcsolatokra tervezzük bontani, így a privát szférát is biztosítjuk
 a felhasználók számára.
 
 Projekt terv
--Projektszerepkörök, felelősségek
--Projektmunkások és felelősségeik
+-Projektszerepkörök, felelősségek:
+csak szoftver fejlesztők dolgoznak a projekten, egyéb szerepkört a projekt nem igényel
+
+-Projektmunkások és felelősségeik:
+Az alábbi szoftver fejlesztők munkájára van szükség :
+Sohajda Alex: 1 felhasználói felület és az ahhoz kapcsolódó navigáció fejlesztése,
+1 adatbázis tábla létrehozása az ahhoz kapcsolódó lekérdezésekkel együtt,
+az eddigiekhez kapcsolódó Java kód megírása
+Török Iza: 1 felhasználói felület és az ahhoz kapcsolódó navigáció fejlesztése,
+1 adatbázis tábla létrehozása az ahhoz kapcsolódó lekérdezésekkel együtt,
+az eddigiekhez kapcsolódó Java kód megírása
+Németh Máté : 1 felhasználói felület és az ahhoz kapcsolódó navigáció fejlesztése,
+1 adatbázis tábla létrehozása az ahhoz kapcsolódó lekérdezésekkel együtt,
+az eddigiekhez kapcsolódó Java kód megírása
+Hódi Zsuzsa : projekt összeállítása, 1 felhasználói felület és az ahhoz kapcsolódó 
+navigáció fejlesztése, 1 adatbázis tábla létrehozása az ahhoz kapcsolódó 
+lekérdezésekkel együtt, az eddigiekhez kapcsolódó Java kód megírása
+
 -Ütemterv
+Felhasználói felületek létrehozása, tesztelése: november 4.
+Navigáció és menü biztosítása, tesztelése: november 11.
+Adatbázis létrehozása, tesztelése: november 18.
+Adatbázis lekérdezések megírása, tesztelése: november 25.
+Egyéb szükséges Java kód megírása, tesztelése: december 2.
+Végleges tesztek: december 9.
+
 -Mérföldkövek
-Felhasználói felületek létrehozása: november 4.
-Navigáció és menü: november 11.
-Adatbázis létrehozása: november 18.
-Adatbázis lekérdezések megírása: november 25.
-Egyéb szükséges Java kód megírása: december 2.
-Szükséges változtatások, program végleges verziója: december 9.
+Felhasználói felületek létrehozása
+Navigáció és menü
+Adatbázis létrehozása
+Adatbázis lekérdezések megírása
+Egyéb szükséges Java kód megírása
+Szükséges változtatások, program végleges verziója
 
 Üzleti folyamatok modellje
 -Üzleti szereplők
@@ -32,24 +55,24 @@ Szükséges változtatások, program végleges verziója: december 9.
 
 Követelmények
 -Funkcionális követelmények:
-- Adatok megfelelő tárolása
-- Adatok megfelelő leképezése
-- Adatok valós idejű változása
-- Adatok szinkronizációja
-- Adatoknak megfelelően UI változása
-- Felhasználók közötti kommunikáció a tervezettnek megfelelő működése
-- Az alkalmazás és a Firebase közötti megfelelő kapcsolat
+ Adatok megfelelő tárolása
+ Adatok megfelelő leképezése
+ Adatok valós idejű változása
+ Adatok szinkronizációja
+ Adatoknak megfelelően UI változása
+ Felhasználók közötti kommunikáció a tervezettnek megfelelő működése
+ Az alkalmazás és a Firebase közötti megfelelő kapcsolat
 
 -Nem funkcionális követelmények:
-- Könnyű olvashatóság
-- Áttekinthetőség
-- Egyértelmű navigáció
-- 24 órás rendelkezésre állás
+ Könnyű olvashatóság
+ Áttekinthetőség
+ Egyértelmű navigáció
+ 24 órás rendelkezésre állás
 
 -Törvényi előírások, szabványok: 
-- Felhasználók adatainak titkosításáról kell gondoskodni
-- GDPR-nak megfelelően hozzájárulást kell kérni, hogy tárolhassuk az adatokat
-- Felhasználókat tájékoztatni kell az adataik felhasználásáról
+ Felhasználók adatainak titkosításáról kell gondoskodni
+ GDPR-nak megfelelően hozzájárulást kell kérni, hogy tárolhassuk az adatokat
+ Felhasználókat tájékoztatni kell az adataik felhasználásáról
 
 Funkcionális terv
 -Rendszerszereplők
