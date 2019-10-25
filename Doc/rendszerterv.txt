@@ -109,3 +109,7 @@ Telepítési terv
 - APK feltöltése
 
 Karbantartási terv
+- Aktuális Android verziónak megfelelő változtatások implementálása
+- Felhasználói vélemények alapján fejlesztések végrehajtása
+- Google AdWords implementálása
+- Aktuális AdWords policy-nak megfelelő változtatások implementálása
