@@ -44,6 +44,14 @@ az azonnali reagálás lehetőségét, melynek révén a játék közben nyújto
 teljesítmény jelentős javulását reméljük.
 
 4. Jelenlegi folyamatok
+-Jelenleg a streamerek, e-sportolók csak a közösségi médiát (Facebook,Twitter),
+esetleg a streameléshez használt platformot (Youtube) használják (ha lehetséges) 
+kommunikációra, egy erre specifikált platform szükséges, és hatékonyabb is lehet.
 
 5. Igényelt üzleti feladatok
-
+-A szoftver képes legyen a már regisztrált felhasználók adatbázisából kikeresni a 
+bejelentkezni kívánó felhasználót, ha nem létezik, akkor azt jelezze.
+-A szoftver képes legyen új felhasználót regisztrálni, ha hibás, vagy már létező
+felhasználónevet, vagy hibás jelszót ad meg a regisztráló, arról értesítse azt.
+-A szoftver képes legyen kezelni a követést (egy irányú), és az ismerettséget
+(2 irányú).
