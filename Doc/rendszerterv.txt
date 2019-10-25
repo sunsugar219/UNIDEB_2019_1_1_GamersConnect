@@ -128,11 +128,15 @@ Telepítési terv
 - Tesztek sikerességének biztosítása
 - APK csomag létrehozása
 - Google account létrehozása a csapat számára PlayStore-on
-- Applikáció leírása, vonzóvá tétele
+- Marketing terv, előkészületek
+- Applikáció leírása
 - APK feltöltése
 
 Karbantartási terv
 - Aktuális Android verziónak megfelelő változtatások implementálása
 - Felhasználói vélemények alapján fejlesztések végrehajtása
+- Használat közben észlelt szükséges változtatások fejlesztése
+- Applikáció teljesítményének optimalizálása
+- Felhasználói felület optimalizálása
 - Google AdWords implementálása
 - Aktuális AdWords policy-nak megfelelő változtatások implementálása
