@@ -1,4 +1,4 @@
-Gamers Connect
+﻿Gamers Connect
 Funkcionális specifikáció
 
 1.Vezetői összefoglaló

@@ -45,14 +45,14 @@ csapattagot találni.
 minden lehetséges e-sportoló részvételére lehet számítani, a potenciális
 nézők pedig be tudják ütemezni az időbeosztásukba a stream nézését.
 - Szükséges a hordozható kommunikáció biztosítása mobil alkalmazás révén.
-- A szoftver a lehető legtöbb android verzióval kompatibilis lesz, így a szoftvert
-minden, Android operációs rendszert haszáló mobiltulajdonos képes lesz használni.
+- A szoftver a lehető legtöbb android verzióval kompatibilis legyen, így a szoftvert
+minden, Android operációs rendszert haszáló mobiltulajdonos legyen képes használni.
 Később igény szerint bővíthető a támogatott platformok köre PC(Böngésző)/IOS(alkalmazás)
 platformokkal.
--A szoftver ingyenesen elérhető lesz a play áruházból, opcionális fizetős 
+-A szoftver ingyenesen legyen elérhető a play áruházból, opcionális fizetős 
 tartalmakkal.
 -A szoftvernek a fejlesztők számára könnyen karbantarthatónak kell lennie, 
-egyes részeinek platform-függetlennek kell lennie.
+egyes részeinek platform-függetlennek kell lennie (pl. adatbázis).
 
 4. Jelenlegi folyamatok
 -Jelenleg a streamerek, e-sportolók csak a közösségi médiát, esetleg a streameléshez 
@@ -60,6 +60,10 @@ használt platformot használják (ha lehetséges) kommunikációra, egy erre
 specifikált platform szükséges, és hatékonyabb is lehet.
 
 5. Igényelt üzleti feladatok
+-A programnak képesnek kell lennie megkülönböztetni a felhasználókat, újakat regisztrálni
+a rendszerbe.
+-A programnak képesnek kell lennie a felhasználók közötti kapcsolatot kezelni
 -A szoftver újrahasznosítása más programban nem várható, ellenben részei a támogatott
-platformpk bővítése esetén felhasználhatóak.
+platformok bővítése esetén felhasználhatóak, így újrahasznosítható kód írása nem 
+szükséges.
 
