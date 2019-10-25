@@ -54,7 +54,8 @@ Absztrakt domain modell
 -Absztrakt komponensek, ezek kapcsolatai
 
 Architekturális terv
--Egy architekturális tervezési minta (pl. MVC, 3-rétegű alkalmazás, ...)
+-Egy architekturális tervezési minta: MVVM architekturális mintát
+követünk: Model-View-ViewModel, and Android fejlesztői szokásoknak megfelelően.
 -Az alkalmazás rétegei, fő komponensei, ezek kapcsolatai
 -Változások kezelése
 -Rendszer bővíthetősége
@@ -71,6 +72,17 @@ Implementációs terv
 -Kliensoldal osztályai
 
 Tesztterv
+- Felhasználói felület: megfelelő, minden látható és esztétikus függőleges és vízszintes elrendezésben is
+- Navigáció: minden navigációs művelet a kívánt célállapotot eredményezi
+- Menü: minden felületről minden kívánt felület elérhető a menün keresztül
+- Adatbázis: megfelelően van modellezve, minden adat szerepel benne
+- Firebase: az adatbázis megfelelően tárolható Firebase-ben
+- Adatbázis lekérdezések: megfelelő eredményt adják vissza a lekérdezések
+- Adatbázis, új adat: új adat megfelelően kerül tárolásra
+- Adatbázis, változtatás: változtatás megfelelően történik az adatbázisban
+- Adatok változásának érzékelése: a felhasználói felület az aktuális adatoknak megfelel realtime
+- Adatok törlése: a kitörölhető adatok nem generálnak hibát az alkalmazásban
+- JUnit tesztek: nem jeleznek hibát egyik osztályban sem
 
 Telepítési terv
 
