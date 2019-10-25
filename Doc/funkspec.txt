@@ -42,6 +42,11 @@ Egyes eseményekhez történő hozzászólásokkal, chat funkcióval és létreh
 csoportokkal, eseményekkel tervezzük biztosítani a széles platformot és 
 az azonnali reagálás lehetőségét, melynek révén a játék közben nyújtott 
 teljesítmény jelentős javulását reméljük.
+-A fejleszteni kívánt rendszer Android 6.0-tól támogatja a készülékeket, így
+az Android operáációs rendszert használó készülékek jelentős része képes lesz
+futtattni.
+-A kész szoftver igyenesen elérhető lesz a Play áruházból, így mindenkinek elérhető
+lesz.
 
 4. Jelenlegi folyamatok
 -Jelenleg a streamerek, e-sportolók csak a közösségi médiát (Facebook,Twitter),
@@ -55,3 +60,7 @@ bejelentkezni kívánó felhasználót, ha nem létezik, akkor azt jelezze.
 felhasználónevet, vagy hibás jelszót ad meg a regisztráló, arról értesítse azt.
 -A szoftver képes legyen kezelni a követést (egy irányú), és az ismerettséget
 (2 irányú).
+-A szoftver összes eleme a könnyű kezelhetőség érdekében pár (legfeljebb  2-4)
+kattintással elérhetőnek kell lennie.
+A szoftvernek képesnek kell lennie az összes poszt tárolására, jelenlegi erőforrás-hiány
+miatt pedig bizonyos idő eltelte után pedig törölni azt.
