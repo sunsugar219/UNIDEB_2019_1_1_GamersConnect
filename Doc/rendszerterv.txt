@@ -31,9 +31,23 @@ Szükséges változtatások, program végleges verziója: december 9.
 -Üzleti entitások
 
 Követelmények
--Funkcionáliskövetelmények
--Nemfunkcionáliskövetelmények
--Törvényi előírások, szabványok
+-Funkcionális követelmények:
+- Adatok megfelelő tárolása
+- Adatok valós idejű változása
+- Adatok szinkronizációja
+- Adatoknak megfelelően UI változása
+- Felhasználók közötti kommunikáció a tervezettnek megfelelő működése
+
+-Nem funkcionális követelmények:
+- Könnyű olvashatóság
+- Áttekinthetőség
+- Egyértelmű navigáció
+- 24 órás rendelkezésre állás
+
+-Törvényi előírások, szabványok: 
+- Felhasználók adatainak titkosításáról kell gondoskodni
+- GDPR-nak megfelelően hozzájárulást kell kérni, hogy tárolhassuk az adatokat
+- Felhasználókat tájékoztatni kell az adataik felhasználásáról
 
 Funkcionális terv
 -Rendszerszereplők
@@ -54,8 +68,9 @@ Absztrakt domain modell
 -Absztrakt komponensek, ezek kapcsolatai
 
 Architekturális terv
--Egy architekturális tervezési minta: MVVM architekturális mintát
-követünk: Model-View-ViewModel, and Android fejlesztői szokásoknak megfelelően.
+-Egy architekturális tervezési minta: 
+MVVM architekturális mintát követünk: Model-View-ViewModel, 
+az Android fejlesztői szokásoknak megfelelően.
 -Az alkalmazás rétegei, fő komponensei, ezek kapcsolatai
 -Változások kezelése
 -Rendszer bővíthetősége
@@ -85,5 +100,10 @@ Tesztterv
 - JUnit tesztek: nem jeleznek hibát egyik osztályban sem
 
 Telepítési terv
+- Tesztek sikerességének biztosítása
+- APK csomag létrehozása
+- Google account létrehozása a csapat számára PlayStore-on
+- Applikáció leírása, vonzóvá tétele
+- APK feltöltése
 
 Karbantartási terv
