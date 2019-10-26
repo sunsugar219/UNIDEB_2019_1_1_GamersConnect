@@ -66,7 +66,7 @@ Követelmények
 -Nem funkcionális követelmények:
  Könnyű olvashatóság
  Áttekinthetőség
- Egyértelmű navigáció
+ Egyértelmű, gyors navigáció
  24 órás rendelkezésre állás
 
 -Törvényi előírások, szabványok: 
@@ -75,21 +75,28 @@ Követelmények
  Felhasználókat tájékoztatni kell az adataik felhasználásáról
 
 Funkcionális terv
--Rendszerszereplők
+-Rendszerszereplők 
+ Felhasználó: internetes felhasználó, bejegyzést oszthat meg, rákereshet,
+ követhet, és visszakövethet más felhasználókat, szerkesztheti saját adatait.
 -Rendszerhasználati esetek és lefutásaik
 -Határosztályok
  Hírfolyam
  Követések/Ismerősök
- Menü
+ Menü-oldalsáv
 -Menü-hierarchiák
+ A menü-oldalsáv 2 opciót fog kezdetben tartalmazni: profil, és ismerettségek. 
+ A felül található HOME gombbal a felhasznló vissza tud lépni a kezdőoldalra/hírfolyamra
+ azon tartózkodva pedig frissítheti azt.
 -Képernyőtervek
 
 Fizikai környezet
--Vásárolt softwarekomponensek és külső rendszerekű
+-Vásárolt softwarekomponensek és külső rendszerek
  A szoftver nem igényel vásárolt komponenseket, az adatbázist a Firebase ingyenes
  adatbázis kezelője fogja tárolni és kezelni, a felhasználók beléptetését és 
  regisztrációját is ez fogja kezelni.
--Hardver és hálózatitopológia
+-Hardver és hálózati topológia
+ A szoftver felhasználónként egy Androidos eszközt igényel, ezek fognak csatlakozni
+ a szerverhez, mely hálózatot a Firebase rendszere fog kezelni
 -Fizikai alrendszerek
 -Fejlesztő eszközök
  A szoftver Android Studio 3.5-ben fogjuk fejleszteni.
@@ -107,6 +114,9 @@ az Android fejlesztői szokásoknak megfelelően.
 -Változások kezelése
 -Rendszer bővíthetősége
 -Biztonsági funkciók
+ A felhasználók adatait a Firebase beépített tikosítója titkosítja, így mások által
+ azok nem hozzáférhetőek. A beléptetés/regisztráció is a Firebase által történik, annak
+ titkosítása biztosítja az adatok biztonságát.
 
 Adatbázis terv
 -Logikai adatmodell
@@ -117,7 +127,11 @@ Implementációs terv
 -Perzisztencia-osztályok
 -Üzleti logika osztályai
 -Kliensoldal osztályai
-
+ Bejelentkezési és regisztrációs oldalt megjelenítő osztál
+ Hírfolyamot megjelenítő osztály
+ Ismerősöket és követéseket megjelenítő osztály
+ Saját profil oldalt megjelenítő osztály
+ 
 Tesztterv
 - Felhasználói felület: megfelelő, minden látható és esztétikus függőleges és vízszintes elrendezésben is
 - Navigáció: minden navigációs művelet a kívánt célállapotot eredményezi
@@ -138,6 +152,8 @@ Telepítési terv
 - Marketing terv, előkészületek
 - Applikáció leírása
 - APK feltöltése
+- APK letöltése a kliens eszközére
+- APK telepítése a kliens eszközére
 
 Karbantartási terv
 - Aktuális Android verziónak megfelelő változtatások implementálása
