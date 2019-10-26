@@ -1,4 +1,4 @@
-Gamers Connect
+﻿Gamers Connect
 Rendszerterv
 
 A rendszer célja
@@ -78,14 +78,21 @@ Funkcionális terv
 -Rendszerszereplők
 -Rendszerhasználati esetek és lefutásaik
 -Határosztályok
+ Hírfolyam
+ Követések/Ismerősök
+ Menü
 -Menü-hierarchiák
 -Képernyőtervek
 
 Fizikai környezet
--Vásárolt softwarekomponensek és külső rendszerek
+-Vásárolt softwarekomponensek és külső rendszerekű
+ A szoftver nem igényel vásárolt komponenseket, az adatbázist a Firebase ingyenes
+ adatbázis kezelője fogja tárolni és kezelni, a felhasználók beléptetését és 
+ regisztrációját is ez fogja kezelni.
 -Hardver és hálózatitopológia
 -Fizikai alrendszerek
 -Fejlesztő eszközök
+ A szoftver Android Studio 3.5-ben fogjuk fejleszteni.
 -Keretrendszer (pl. Spring)
 
 Absztrakt domain modell
