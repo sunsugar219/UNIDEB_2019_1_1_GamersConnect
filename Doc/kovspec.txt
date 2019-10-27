@@ -35,6 +35,13 @@ Az utóbbinak hátránya van, mivel az információ átadás és a reagálás ne
 pillanatában, hiszen tudjuk, hogy egy játékos sem szívesen szakítja meg a játékot, ha egy 
 üzenete érkezik. Ezért pillanatnyilag a játékon belüli kommunikációt használják, mert az a 
 gyorsabb megoldás és a reagálási idő is rövidebb.
+-A helyesség fontos kritériumként megemlíthető, viszont jelenleg nem sok mindent mondhatunk 
+el róla, hiszen nem létezik egy konkrét e-sportolók által használt közösségi oldal, amit 
+elemezhetnénk. 
+-Egy projekt létrehozásánál fontos figyelembe venni a megbízhatóságot. Ez főképpen a 
+felhasználókkal szemben érdemes megemlíteni, hiszen ha a felhasználó valamiért 
+megbízhatatlannak tekinti a terméket, akkor nem is fogja használni, és ezért ennek nem 
+garantált a hosszútávú működtetése. 
 
 
 3. Vágyálom rendszer
