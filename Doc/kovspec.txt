@@ -17,7 +17,10 @@ E-Sportolók privát szférája is biztosítva legyen.
 2. Jelenlegi helyzet
 - Jelenleg az e-sportolók közötti kommunikáció játékon vagy platformon
 belül biztosított, nincs egy olyan rendszer, amelyet minden egyes 
-e-sportoló használhatna, játéktól függetlenül. 
+e-sportoló használhatna, játéktól függetlenül.Az e-sportolók 
+olyan közösségi oldalakat használnak (Facebook, Twitter), ami 
+általánosságban nem a gamer közösségnek van kialakítva. Ezért 
+találtuk ki ezt az alkalmazást. 
 - Ez a játék közben biztosított teljesítményt ronthatja, hiszen
 csapattagok hiányozhatnak a nem eléggé univerzális platformokon történő
 szervezés következtében.
@@ -74,8 +77,7 @@ internetkapcsolat.
 4. Jelenlegi folyamatok
 -Jelenleg a streamerek, e-sportolók csak a közösségi médiát, esetleg a streameléshez 
 használt platformot használják (ha lehetséges) kommunikációra, egy erre 
-specifikált platform szükséges, és hatékonyabb is lehet.
-
+specifikált platform szükséges, és hatékonyabb is lehet. 
 5. Igényelt üzleti feladatok
 -A programnak képesnek kell lennie megkülönböztetni a felhasználókat, újakat regisztrálni
 a rendszerbe.
