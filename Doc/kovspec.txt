@@ -60,6 +60,17 @@ platformokkal.
 tartalmakkal.
 -A szoftvernek a fejlesztők számára könnyen karbantarthatónak kell lennie, 
 egyes részeinek platform-függetlennek kell lennie (pl. adatbázis).
+-Lényeges a projekt/alkalmazás helyessége, ami ebben a konkrét projektben az adatok beolvasásában 
+jelenik meg. Az alkalmazásban minden egyes regisztráció, meg bejelentkezés során, fontos az 
+adatok helyességének vizsgálata, illetve a kezdetleges adatok ellenőrzése.. például létező 
+e-mail cím megadása. Ugyanekkor, a megbízhatóság is egy fontos alpontot jelent a projektünk 
+fejlesztésénél. Arra kell törekednünk, hogy minél megbízhatóbb legyen az alkalmazás, a 
+felhasználói adatokat  biztos helyen tárolni, ahol senki nem férhet hozzá. Ez már egy pluszpontot
+jelent, hiszen ha a felhasználó megbízhat az alkalmazásban, akkor használni is fogja. 
+-Az alkalmazás létrehozásával arra törekedünk, hogy megkönnyítsük az e-sportolók életét. Egy 
+könnyen használható közösségi oldalról beszélünk. Mobilalkalmazásnak indul, android operációs 
+rendszert futtató telefonon lesz elérhető. Ezért bárhonnan, bármikor használható, ha van 
+internetkapcsolat.
 
 4. Jelenlegi folyamatok
 -Jelenleg a streamerek, e-sportolók csak a közösségi médiát, esetleg a streameléshez 
