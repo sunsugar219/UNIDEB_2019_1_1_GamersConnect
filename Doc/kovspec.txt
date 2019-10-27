@@ -24,7 +24,6 @@ szervezés következtében.
 - Mivel az e-sportolók közötti kommunikáció általában a játék által
 biztosított platformon van megoldva, ezért az azonnali reagálás 
 valószínűsége csökken mobil eszközök nélkül. 
-
 -Jelenlegi helyzetünkben használhatóságról nem sokat tudunk megemlíteni, hiszen 
 napjainkban még nem elérhető egy konkrét közösségi média amihez minden e-sportoló 
 könnyen hozzáférhet. Ha egy e-sportoló bizonyos információt szeretne megosztani 
@@ -85,4 +84,6 @@ a rendszerbe.
 -A szoftver újrahasznosítása más programban nem várható, ellenben részei a támogatott
 platformok bővítése esetén felhasználhatóak, így újrahasznosítható kód írása nem 
 szükséges.
+-Közösség építés
+-Közvetlen kommunikáció platform
 
