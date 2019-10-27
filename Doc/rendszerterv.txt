@@ -121,13 +121,24 @@ az Android fejlesztői szokásoknak megfelelően.
 Adatbázis terv
 -Logikai adatmodell
 -Tárolt eljárások
+ Felhasználónevek és hozzájuk tartozó jelszavak lekérdezése bejelentkezéskor
+ és regisztrációkor.
+ A felhasználó által követett felhasználók által közétett posztok lekérdezése
+ hírfolyamon való megjelenítéshez
+ Követések lekérdezése
+ Saját adatok lekérdezése
 -Fizikai adatmodellt legeneráló SQL szkript
 
 Implementációs terv
 -Perzisztencia-osztályok
+ Bejelentkezés: Felhasználónevek és hozzájuk tartozó jelszavak lekérdezése
+ Kezdőlap: A felhasználó által követett felhasználók által közétett 
+ posztok lekérdezése
+ Ismerősök, követések: Követések lekérdezése
+ Profil: Saját adatok lekérdezése
 -Üzleti logika osztályai
 -Kliensoldal osztályai
- Bejelentkezési és regisztrációs oldalt megjelenítő osztál
+ Bejelentkezési és regisztrációs oldalt megjelenítő osztály
  Hírfolyamot megjelenítő osztály
  Ismerősöket és követéseket megjelenítő osztály
  Saját profil oldalt megjelenítő osztály
