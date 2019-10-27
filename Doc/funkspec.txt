@@ -24,6 +24,20 @@ szükséges információ mindenkihez eljut időben.
 hiszen ennek segítségével az e-sportolók közötti kommunikáció javulna.
 Jelenleg az azonnali reagálás lehetősége platformtól függ, hiszen a 
 legtöbb e-sporttal kapcsolatos kommunikáció csak PC-n történik.
+-Jelenlegi helyzetünkben használhatóságról nem sokat tudunk megemlíteni, hiszen 
+napjainkban még nem elérhető egy konkrét közösségi média amihez minden e-sportoló 
+könnyen hozzáférhet. Ha egy e-sportoló bizonyos információt szeretne megosztani 
+bármilyen játékkal kapcsolatban, akkor ezt egy megszokott, mindennap használt közösségi 
+oldalon teheti meg. Persze a kommunikáció a játékosok között a jelenlegi helyzetben is 
+megvalósulhat, akár a játékon belül, vagy akár egy közösségi oldalon való beszélgetésben.
+Az utóbbinak a hátránya az lenne, hogy az információ nem jut el a megfelelő időpontban.
+-A helyesség fontos kritériumként megemlíthető, viszont jelenleg nem sok mindent mondhatunk 
+el róla, hiszen nem létezik egy konkrét e-sportolók által használt közösségi oldal, amit 
+elemezhetnénk. Ezért szükséges egy telefonos applikáció létrehozása. 
+-Egy projekt létrehozásánál fontos figyelembe venni a megbízhatóságot. Ez főképpen a 
+felhasználókkal szemben érdemes megemlíteni, hiszen ha a felhasználó valamiért 
+megbízhatatlannak tekinti a terméket, akkor nem szívesen használja, és ezért ennek nem 
+garantált a hosszútávú működtetése. 
 
 3. Vágyálom rendszer
 - Az általunk fejleszteni kívánt rendszert játéktól függetlenül minden egyes 
