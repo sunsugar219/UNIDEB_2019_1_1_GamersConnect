@@ -61,7 +61,7 @@ az Android operáációs rendszert használó készülékek jelentős része ké
 futtattni.
 -A kész szoftver igyenesen elérhető lesz a Play áruházból, így mindenkinek elérhető
 lesz.
-Lényeges a projekt/alkalmazás helyessége, ami ebben a projektben az adatok beolvasásában
+-Lényeges a projekt/alkalmazás helyessége, ami ebben a projektben az adatok beolvasásában
 jelenik meg. Az alkalmazásban minden egyes regisztráció, meg bejelentkezés során, 
 fontos az adatok helyességének vizsgálata, illetve a kezdetleges adatok ellenőrzése:
 például létező e-mail cím megadása. Ugyanekkor, a megbízhatóság is fontos alpontot 
@@ -71,7 +71,7 @@ férhet hozzá. Ez már fél sikert jelenthet, hiszen ha a felhasználó megbíz
 alkalmazásban, akkor azt jelenti, hogy szívesen használja különféle bejegyzések 
 közzétételéhez, vagy bármilyen információ megosztásához. Ezenkivül követők, ismerősők 
 szerzését teszi lehetővé az applikáció. 
-Az alkalmazás létrehozásával arra törekedünk, hogy megkönnyítsük az e-sportolók életét. 
+-Az alkalmazás létrehozásával arra törekedünk, hogy megkönnyítsük az e-sportolók életét. 
 Egy könnyen használható közösségi oldalról beszélünk. Mobilalkalmazásnak indul, Android 
 operációs rendszert futtató telefonon lesz elérhető. Ezért bárhonnan, bármikor 
 használható, ha van internetkapcsolat.
