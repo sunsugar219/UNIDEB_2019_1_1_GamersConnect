@@ -63,6 +63,7 @@ specifikált platform szükséges, és hatékonyabb is lehet.
 -A programnak képesnek kell lennie megkülönböztetni a felhasználókat, újakat regisztrálni
 a rendszerbe.
 -A programnak képesnek kell lennie a felhasználók közötti kapcsolatot kezelni
+-A felhasználók tudjanak bejegyzéseket készíetni.
 -A szoftver újrahasznosítása más programban nem várható, ellenben részei a támogatott
 platformok bővítése esetén felhasználhatóak, így újrahasznosítható kód írása nem 
 szükséges.
