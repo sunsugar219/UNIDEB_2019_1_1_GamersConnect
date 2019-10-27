@@ -49,8 +49,12 @@ Egyéb szükséges Java kód megírása
 Szükséges változtatások, program végleges verziója
 
 Üzleti folyamatok modellje
--Üzleti szereplők
--Üzleti folyamatok
+-Üzleti szereplők:
+Felhasználó: aki kezdetben regisztrál, helyes e-mail cím megadásával és jelszóval, 
+amellyel a következőkben könnyedén bejelentkezhet
+-Üzleti folyamatok: 
+Adatok beolvasása: a felhasználói felületről a felhasználó által megadott adatok bevitele,
+ezek helyességének vizsgálata
 -Üzleti entitások
 
 Követelmények
@@ -174,3 +178,20 @@ Karbantartási terv
 - Felhasználói felület optimalizálása
 - Google AdWords implementálása
 - Aktuális AdWords policy-nak megfelelő változtatások implementálása
+
+Modellezési koncepció
+- A tervezés alapvető irányelvei:
+	A kialakított felhasználói felület közösségi oldal specifikus. A tervezése során szükséges
+	szem előtt tartani a lehetséges felhasználói igényeket és az elvárt funkcionalitást.
+- Belépés a rendszerbe
+	Az e-sportolók által megosztott bejegyzéseket, információkat nyilvántartó rendszer felhasználói felületre 
+	egy bejelentkezési ablakon keresztül jutnak a felhasználók. A felhasználók számára néhány funkciót teszünk 
+	lehetővé. Ezek közé tartoznak például a bejegyzések megosztása, illetve az ismerősők szerzése.
+- Képernyő felosztása:
+	A felhasználónak megadatik a képernyőn való navigálás, bizonyos fülek létrehozásával.
+
+Bejelentkezés
+	Az applikáció használatához szükséges a kezdetleges regisztráció, bizonyos adatok 
+	megadásával, mint az érvényes e-mail cím illetve jelszó. A regisztráció megtörténte
+	után elegendő a bejelentkezés.
+	Figyelembe kell vennünk az adatok validálását, hiszen csak érvényes adatokat fogadhatunk el. 
