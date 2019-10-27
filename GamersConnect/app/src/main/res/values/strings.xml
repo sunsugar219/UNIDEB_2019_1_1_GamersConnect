@@ -2,9 +2,7 @@
     <string name="app_name">Gamers Connect</string>
     <string name="email">E-mail:</string>
     <string name="Password">Password:</string>
-    <string name="Offertext">Not signed up yet?</string>
+    <string name="Offertext">Not signed up yet? Register.</string>
     <string name="registertext">Register</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="pass_again">Password again:</string>
 </resources>

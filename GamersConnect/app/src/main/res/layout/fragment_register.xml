@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#311B92"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".RegisterFragment" >
+    tools:context=".RegisterFragment">
 
     <LinearLayout
+        android:id="@+id/email_layout"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:orientation="vertical">
@@ -15,17 +19,20 @@
             android:id="@+id/email_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/email" />
+            android:text="@string/email"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/emai_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:ems="10"
             android:inputType="textEmailAddress" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/password_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -34,31 +41,36 @@
             android:id="@+id/passwword_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Password" />
+            android:text="@string/Password"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/password_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:ems="10"
             android:inputType="textPassword" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/pass_again_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/pass_again_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/pass_again" />
+            android:text="@string/pass_again"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/pass_again_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:ems="10"
             android:inputType="textPassword" />
     </LinearLayout>
