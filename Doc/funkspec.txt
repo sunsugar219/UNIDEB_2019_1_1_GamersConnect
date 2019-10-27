@@ -61,6 +61,21 @@ az Android operáációs rendszert használó készülékek jelentős része ké
 futtattni.
 -A kész szoftver igyenesen elérhető lesz a Play áruházból, így mindenkinek elérhető
 lesz.
+Lényeges a projekt/alkalmazás helyessége, ami ebben a projektben az adatok beolvasásában
+jelenik meg. Az alkalmazásban minden egyes regisztráció, meg bejelentkezés során, 
+fontos az adatok helyességének vizsgálata, illetve a kezdetleges adatok ellenőrzése:
+például létező e-mail cím megadása. Ugyanekkor, a megbízhatóság is fontos alpontot 
+jelent a projektünk fejlesztésénél. Arra kell törekednünk, hogy minél megbízhatóbb 
+legyen az alkalmazás, a felhasználói adatokat  biztos helyen tárolni, ahol senki nem 
+férhet hozzá. Ez már fél sikert jelenthet, hiszen ha a felhasználó megbízhat az 
+alkalmazásban, akkor azt jelenti, hogy szívesen használja különféle bejegyzések 
+közzétételéhez, vagy bármilyen információ megosztásához. Ezenkivül követők, ismerősők 
+szerzését teszi lehetővé az applikáció. 
+Az alkalmazás létrehozásával arra törekedünk, hogy megkönnyítsük az e-sportolók életét. 
+Egy könnyen használható közösségi oldalról beszélünk. Mobilalkalmazásnak indul, Android 
+operációs rendszert futtató telefonon lesz elérhető. Ezért bárhonnan, bármikor 
+használható, ha van internetkapcsolat.
+
 
 4. Jelenlegi folyamatok
 -Jelenleg a streamerek, e-sportolók csak a közösségi médiát (Facebook,Twitter),
@@ -80,3 +95,5 @@ a többi felhasználóval tartózkodási helyét, streamelése kezdetét.
 kattintással elérhetőnek kell lennie.
 A szoftvernek képesnek kell lennie az összes poszt tárolására, jelenlegi erőforrás-hiány
 miatt pedig bizonyos idő eltelte után pedig törölni azt.
+-Közösség építés
+-Közvetlen kommunikáció platform
