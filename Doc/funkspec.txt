@@ -60,6 +60,8 @@ bejelentkezni kívánó felhasználót, ha nem létezik, akkor azt jelezze.
 felhasználónevet, vagy hibás jelszót ad meg a regisztráló, arról értesítse azt.
 -A szoftver képes legyen kezelni a követést (egy irányú), és az ismerettséget
 (2 irányú).
+-A programnak képesnek kell lennie úgynevezett bejegyzéseket (postokat) létrehozni, mely célja az információközlés. A felhasználók bejegyésein keresztül tudadhatják a többi 
+a többi felhasználóval tartózkodási helyét, streamelése kezdetét.
 -A szoftver összes eleme a könnyű kezelhetőség érdekében pár (legfeljebb  2-4)
 kattintással elérhetőnek kell lennie.
 A szoftvernek képesnek kell lennie az összes poszt tárolására, jelenlegi erőforrás-hiány
