@@ -124,6 +124,9 @@ az Android fejlesztői szokásoknak megfelelően.
 
 Adatbázis terv
 -Logikai adatmodell
+-Az adatbázis táblák kialakítása lényeges a projektünk létrehozásában, hiszen 
+adattárolási szerepe van és feladatok ellátásához szükséges funkciókat is tartalmazzák.
+Több tábla szükséges az egyes feladatok elvégzéséhez.
 -Tárolt eljárások
  Felhasználónevek és hozzájuk tartozó jelszavak lekérdezése bejelentkezéskor
  és regisztrációkor.
