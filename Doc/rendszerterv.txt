@@ -116,7 +116,15 @@ MVVM architekturális mintát követünk: Model-View-ViewModel,
 az Android fejlesztői szokásoknak megfelelően.
 -Az alkalmazás rétegei, fő komponensei, ezek kapcsolatai
 -Változások kezelése
--Rendszer bővíthetősége
+-Rendszer bővíthetősége:
+Program optimalizásása: helyigényét minél jobban leszűkíteni.
+A programot több nyelvre lefordítani és kiadni, ezzel segítve
+ a program elterjedését a többi külföldi 
+országokban.
+A programot portolni IOS rendszerekre, továbbá elérhetőve tenni
+olyan verziót amit asztali bögészőből érhetünk el.
+Bizonyos idő eltelte után saját szervert és adatbázis rendszert
+üzemeltetni a programnak.
 -Biztonsági funkciók
  A felhasználók adatait a Firebase beépített tikosítója titkosítja, így mások által
  azok nem hozzáférhetőek. A beléptetés/regisztráció is a Firebase által történik, annak
@@ -182,6 +190,7 @@ Karbantartási terv
 - Google AdWords implementálása
 - Aktuális AdWords policy-nak megfelelő változtatások implementálása
 
+
 Modellezési koncepció
 - A tervezés alapvető irányelvei:
 	A kialakított felhasználói felület közösségi oldal specifikus. A tervezése során szükséges
@@ -198,3 +207,4 @@ Bejelentkezés
 	megadásával, mint az érvényes e-mail cím illetve jelszó. A regisztráció megtörténte
 	után elegendő a bejelentkezés.
 	Figyelembe kell vennünk az adatok validálását, hiszen csak érvényes adatokat fogadhatunk el. 
+
