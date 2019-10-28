@@ -74,4 +74,12 @@
             android:ems="10"
             android:inputType="textPassword" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/register_button"
+        style="@style/Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/registertext" />
 </LinearLayout>
