@@ -61,6 +61,14 @@ az Android operáációs rendszert használó készülékek jelentős része ké
 futtattni.
 -A kész szoftver igyenesen elérhető lesz a Play áruházból, így mindenkinek elérhető
 lesz.
+-A program képes legyen minden posztot megkülönböztetni és ezeket visszaadni
+ helyesen a felhasználóknak. A program eleinte nem lesz képes az 
+összes posztot tárolni, csak egy bizonyos ideig/poszt számig. Ez 
+a korlátozottság a korai szakaszban lesz csak észrevehető, 
+későbbiekben a bővítés egyik cálja az lesz, hogy visszamenőleg az össszes 
+posztot tárolni tudjunk. Továbbá szeretnénk megvalósítani, hogy a posztokat a 
+felhasználók kölönböző reakciókkal és hozzászólásokkal értékelni 
+tudják (like/comment).
 -Lényeges a projekt/alkalmazás helyessége, ami ebben a projektben az adatok beolvasásában
 jelenik meg. Az alkalmazásban minden egyes regisztráció, meg bejelentkezés során, 
 fontos az adatok helyességének vizsgálata, illetve a kezdetleges adatok ellenőrzése:
@@ -72,7 +80,8 @@ alkalmazásban, akkor azt jelenti, hogy szívesen használja különféle bejegy
 közzétételéhez, vagy bármilyen információ megosztásához. Ezenkivül követők, ismerősők 
 szerzését teszi lehetővé az applikáció. 
 -Az alkalmazás létrehozásával arra törekedünk, hogy megkönnyítsük az e-sportolók életét. 
-Egy könnyen használható közösségi oldalról beszélünk. Mobilalkalmazásnak indul, Android 
+Egy könnyen használható közösségi oldalról beszélünk ahonnan pár kattintással akár
+posztolni és böngészni is tudunk. Mobilalkalmazásnak indul, Android 
 operációs rendszert futtató telefonon lesz elérhető. Ezért bárhonnan, bármikor 
 használható, ha van internetkapcsolat.
 
@@ -89,7 +98,8 @@ bejelentkezni kívánó felhasználót, ha nem létezik, akkor azt jelezze.
 felhasználónevet, vagy hibás jelszót ad meg a regisztráló, arról értesítse azt.
 -A szoftver képes legyen kezelni a követést (egy irányú), és az ismerettséget
 (2 irányú).
--A programnak képesnek kell lennie úgynevezett bejegyzéseket (postokat) létrehozni, mely célja az információközlés. A felhasználók bejegyésein keresztül tudadhatják a többi 
+-A programnak képesnek kell lennie úgynevezett bejegyzéseket (postokat) létrehozni, 
+mely célja az információközlés. A felhasználók bejegyésein keresztül tudadhatják a többi 
 a többi felhasználóval tartózkodási helyét, streamelése kezdetét.
 -A szoftver összes eleme a könnyű kezelhetőség érdekében pár (legfeljebb  2-4)
 kattintással elérhetőnek kell lennie.

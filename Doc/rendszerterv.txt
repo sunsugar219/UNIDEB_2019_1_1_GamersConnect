@@ -71,6 +71,7 @@ Követelmények
  Könnyű olvashatóság
  Áttekinthetőség
  Egyértelmű, gyors navigáció
+ Gyors posztolási lehetőség
  24 órás rendelkezésre állás
 
 -Törvényi előírások, szabványok: 
@@ -84,8 +85,11 @@ Funkcionális terv
  követhet, és visszakövethet más felhasználókat, szerkesztheti saját adatait.
 -Rendszerhasználati esetek és lefutásaik
 -Határosztályok
- Hírfolyam
+ Hírfolyam:
+ A Hírfolyam tartalmazni fogja az összes követett ismerősünk posztját.
  Követések/Ismerősök
+ Megtekinthetjük kiket követünk és hogy kik azok a személyek, akik minket
+ követnek.
  Menü-oldalsáv
 -Menü-hierarchiák
  A menü-oldalsáv 2 opciót fog kezdetben tartalmazni: profil, és ismerettségek. 
@@ -104,6 +108,7 @@ Fizikai környezet
 -Fizikai alrendszerek
 -Fejlesztő eszközök
  A szoftver Android Studio 3.5-ben fogjuk fejleszteni.
+ Adatok tárolása JSON-ben valósítjuk meg.
 -Keretrendszer (pl. Spring)
 
 Absztrakt domain modell
@@ -118,9 +123,17 @@ az Android fejlesztői szokásoknak megfelelően.
 -Változások kezelése
 -Rendszer bővíthetősége:
 Program optimalizásása: helyigényét minél jobban leszűkíteni.
+Eleinte a program nem fog minden posztot tárolni a véges 
+helyigény végett. Későbiekben persze törekszünk minden poszt
+tárolására, így kielégíve a felhasználók visszakeresési igényeit.
+Ezen posztok méretét csökkenteni, elősegítve az előző pontban említett 
+visszakeresési lehetőség minél hamarabbi bekövetkeztét.
+Profil módosítás: A program jelenleg pár előre beállított profilképpel dolgozik. 
+Ezeket a jövőben szeretnénk lecseréni, hogy minden felhasználó olyan 
+profilképet állítson be, amilyet szeretne. Szűkös tárhely miatt 
+ez a funkció csak későbiekben lesz elérhető.
 A programot több nyelvre lefordítani és kiadni, ezzel segítve
- a program elterjedését a többi külföldi 
-országokban.
+a program elterjedését a többi külföldi országokban.
 A programot portolni IOS rendszerekre, továbbá elérhetőve tenni
 olyan verziót amit asztali bögészőből érhetünk el.
 Bizonyos idő eltelte után saját szervert és adatbázis rendszert

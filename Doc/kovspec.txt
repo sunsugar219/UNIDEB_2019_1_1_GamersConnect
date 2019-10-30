@@ -69,6 +69,10 @@ e-mail cím megadása. Ugyanekkor, a megbízhatóság is egy fontos alpontot jel
 fejlesztésénél. Arra kell törekednünk, hogy minél megbízhatóbb legyen az alkalmazás, a 
 felhasználói adatokat  biztos helyen tárolni, ahol senki nem férhet hozzá. Ez már egy pluszpontot
 jelent, hiszen ha a felhasználó megbízhat az alkalmazásban, akkor használni is fogja. 
+-A program minden posztot és a poszthoz tartozó commenteket és like-kat  tudjon 
+tárolni visszamenőleg is, ha egy felhasználó egy régebbi 
+posztot szeretne elérni, meg legyen rá a lehetősége.Továbbá a posztokat a többi 
+felhasználó véleményezni is tudja like/comment formájában. 
 -Az alkalmazás létrehozásával arra törekedünk, hogy megkönnyítsük az e-sportolók életét. Egy 
 könnyen használható közösségi oldalról beszélünk. Mobilalkalmazásnak indul, android operációs 
 rendszert futtató telefonon lesz elérhető. Ezért bárhonnan, bármikor használható, ha van 
@@ -82,7 +86,8 @@ posztolni azt a megfelelő elérési útvonalakkal, adatokkal.
 4. Jelenlegi folyamatok
 -Jelenleg a streamerek, e-sportolók csak a közösségi médiát, esetleg a streameléshez 
 használt platformot használják (ha lehetséges) kommunikációra, egy erre 
-specifikált platform szükséges, és hatékonyabb is lehet. 
+specifikált platform szükséges, és hatékonyabb is lehet.
+ 
 5. Igényelt üzleti feladatok
 -A programnak képesnek kell lennie megkülönböztetni a felhasználókat, újakat regisztrálni
 a rendszerbe.
