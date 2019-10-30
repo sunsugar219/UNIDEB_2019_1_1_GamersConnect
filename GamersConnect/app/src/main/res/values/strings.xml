@@ -5,4 +5,30 @@
     <string name="Offertext">Not signed up yet? Register.</string>
     <string name="registertext">Register</string>
     <string name="pass_again">Password again:</string>
+
+    <!-- Viewpager titles-->
+    <string name="title_log_in">Log In</string>
+    <string name="title_register">Register</string>
+    <string name="title_wall">Wall</string>
+
+
+    <!-- strings for recyclerview test -->
+    <string name="testText1">sbdgoiebévtitbeasbdgoiebévtitbeasbdgoiebévtitb easbdgoiebévtitbeasbdgoiebévtitbeasbdg  oiebévtitbeasbdgoiebévtitbeasbdgoiebévtitbea</string>
+    <string name="testText2">sbdgoiebévtitsbdgoiebévtitbeasb dgoiebévtitbeasbdgoiebévtitbeasbdgoiebévtitb easbdgoiebévtitbeabea</string>
+    <string name="testText3">sbdgoiebévtitbsbdgoieb évtitbeasbdgoiebévtitbeasbdgoiebévtitbeasbdgoiebévtit beasbdgoiebévtitbeasbdgoiebévtitbeaea</string>
+    <string name="testText4">sbdgoiebévtitbsbdgoiebé vtitbeasbdgoiebévtitbeasbdgoi ebévtitbeasbdgoiebévtitbeas bdgoiebévtitbeaea</string>
+    <string name="testText5">sbdgoiebévtitbsbdgoiebévt itbeasbdgoiebévtitbeasbdgoiebé vtitbeasbdgoiebévtitbeasbdg oiebévtitbeaea</string>
+    <string name="testText6">sbdgoiebévtisbdgoiebévtitb easbdgoiebévtitbeasbdgoiebévtit b easbdgoiebévtitbeasbdgoiebévtitbeasbdgoiebév titbeasbdgoiebévtitbeatbea</string>
+    <string name="testText7">sbdgoiebévtitbeasbdgo iebévtitbeasbdgoiebévtitbea sbdgoiebévtitbeasbdgoiebév titbeasbdgoiebévtitbeasbdgoiebév titbea</string>
+    <string name="testText8">sbdgoiebévtitbeasbdgoi ebévtitbeasbdgoiebévtitbeasbdgoiebé vtitbeasbdgoiebévtitbeasbdgoiebévt itbeasbdgoiebévtitbea</string>
+    <string name="testText9">sbdgoiebévtitbeasbdgoiebévtitbea sbdgoiebévtitbeasb dgoiebévtitbeasbdgo iebévtitbeasbdgoiebévtit bea</string>
+    <string name="testText10">sbdgoiebévtitbes bdgoiebévtitbeasbdgoi ebévtitbeasbdgoiebévtitbeasbdgoi ebévtitbeasbdgoiebévti tbeasbdgoiebévtitbeaa</string>
+    <string name="testText11">sbdgoiebévtitbesbdg oiebévtitbeasbdgoiebévtitbeasb dgoiebévtitbeasbdgo iebévtitbeasbdgoiebévtitbea sbdgoiebévtitbeaa</string>
+    <string name="testText12">sbdgoiebévtitbesbdgo iebévtitbeasb dgoiebévtitbe asbdgoiebévtitbe asbdgoiebé vtitbeaa</string>
+    <string name="testText13">sbdgoiebévtitbesbdgo iebévtitbeasbdgoie bévtitbeasbdgoie bévtitbeasbdgo iebévtitbeasbdgoiebé vtitbeasbdgoiebévtitbeaa</string>
+    <string name="testText14">sbdgoiebévtitbeasbdg oiebévtitbeasbdgoieb évtitbeasbdgoi ebévtitbeasbdgoiebévtitbeas bdgoiebévtitbea</string>
+    <string name="testText15">sbdgoiebévtit besbdgoiebévtitbea sbdgoiebévtitbea sbdgoiebévtitbeaa</string>
+    <string name="testText16">sbdgoiebévtitb esbdgoiebévtitbeasbd goiebévtitbeasbdgoi ebévtitbeasbdgoiebévti tbeasbdgoiebévtitbeaa</string>
+
 </resources>
+
