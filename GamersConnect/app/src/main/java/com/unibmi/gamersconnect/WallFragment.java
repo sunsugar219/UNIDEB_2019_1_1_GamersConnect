@@ -25,24 +25,7 @@ import android.widget.TextView;
  * Use the factory method to
  * create an instance of this fragment.
  */
-public class WallFragment extends Fragment /*implements OnFragmentInteractionListener*/ {
-
-    /*String[] strings = {getContext().getResources().getString(R.string.testText1),
-            getContext().getResources().getString(R.string.testText2),
-            /*getActivity().getString(R.string.testText3),
-            getActivity().getString(R.string.testText4),
-            getActivity().getString(R.string.testText5),
-            getActivity().getString(R.string.testText6),
-            getActivity().getString(R.string.testText7),
-            getActivity().getString(R.string.testText8),
-            getActivity().getString(R.string.testText9),
-            getActivity().getString(R.string.testText10),
-            getActivity().getString(R.string.testText11),
-            getActivity().getString(R.string.testText12),
-            getActivity().getString(R.string.testText13),
-            getActivity().getString(R.string.testText14),
-            getActivity().getString(R.string.testText15),*/
-           /* getContext().getResources().getString(R.string.testText16)};*/
+public class WallFragment extends Fragment{
 
     public WallFragment() {}
 
@@ -50,11 +33,10 @@ public class WallFragment extends Fragment /*implements OnFragmentInteractionLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        String[] strings = getResources().getStringArray(R.array.testTexts);
         Context cx = getActivity().getApplicationContext();
         RecyclerView rv = new RecyclerView(getContext());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.setAdapter(new SimpleRVAdapter(strings, cx));
+        rv.setAdapter(new SimpleRVAdapter(cx));
         return rv;
     }
 
@@ -63,15 +45,19 @@ public class WallFragment extends Fragment /*implements OnFragmentInteractionLis
      */
     public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
         private String[] dataSource;
-        public SimpleRVAdapter(String[] dataArgs, Context cx){
+        public SimpleRVAdapter(Context cx){
 
             dataSource = cx.getResources().getStringArray(R.array.testTexts);
         }
 
         @Override
         public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
             View view = new TextView(parent.getContext());
             view.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+            view.setLayoutParams(lp);
+            view.setPaddingRelative(5, 5, 5, 5);
             SimpleViewHolder viewHolder = new SimpleViewHolder(view);
             viewHolder.textView.setTextColor(getResources().getColor(R.color.colorAccent));
             return viewHolder;
