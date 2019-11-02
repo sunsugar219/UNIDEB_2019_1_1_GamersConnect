@@ -30,5 +30,23 @@
     <string name="testText15">sbdgoiebévtit besbdgoiebévtitbea sbdgoiebévtitbea sbdgoiebévtitbeaa</string>
     <string name="testText16">sbdgoiebévtitb esbdgoiebévtitbeasbd goiebévtitbeasbdgoi ebévtitbeasbdgoiebévti tbeasbdgoiebévtitbeaa</string>
 
+    <string-array name="testTexts">
+        <item>@string/testText1</item>
+        <item>@string/testText2</item>
+        <item>@string/testText3</item>
+        <item>@string/testText4</item>
+        <item>@string/testText5</item>
+        <item>@string/testText6</item>
+        <item>@string/testText7</item>
+        <item>@string/testText8</item>
+        <item>@string/testText9</item>
+        <item>@string/testText10</item>
+        <item>@string/testText11</item>
+        <item>@string/testText12</item>
+        <item>@string/testText13</item>
+        <item>@string/testText14</item>
+        <item>@string/testText15</item>
+        <item>@string/testText16</item>
+    </string-array>
 </resources>
 

@@ -27,7 +27,22 @@ import android.widget.TextView;
  */
 public class WallFragment extends Fragment /*implements OnFragmentInteractionListener*/ {
 
-    String[] strings = {"1", "2", "3", "4", "5", "6", "7"};
+    /*String[] strings = {getContext().getResources().getString(R.string.testText1),
+            getContext().getResources().getString(R.string.testText2),
+            /*getActivity().getString(R.string.testText3),
+            getActivity().getString(R.string.testText4),
+            getActivity().getString(R.string.testText5),
+            getActivity().getString(R.string.testText6),
+            getActivity().getString(R.string.testText7),
+            getActivity().getString(R.string.testText8),
+            getActivity().getString(R.string.testText9),
+            getActivity().getString(R.string.testText10),
+            getActivity().getString(R.string.testText11),
+            getActivity().getString(R.string.testText12),
+            getActivity().getString(R.string.testText13),
+            getActivity().getString(R.string.testText14),
+            getActivity().getString(R.string.testText15),*/
+           /* getContext().getResources().getString(R.string.testText16)};*/
 
     public WallFragment() {}
 
@@ -35,9 +50,11 @@ public class WallFragment extends Fragment /*implements OnFragmentInteractionLis
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        String[] strings = getResources().getStringArray(R.array.testTexts);
+        Context cx = getActivity().getApplicationContext();
         RecyclerView rv = new RecyclerView(getContext());
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.setAdapter(new SimpleRVAdapter(strings));
+        rv.setAdapter(new SimpleRVAdapter(strings, cx));
         return rv;
     }
 
@@ -46,8 +63,9 @@ public class WallFragment extends Fragment /*implements OnFragmentInteractionLis
      */
     public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
         private String[] dataSource;
-        public SimpleRVAdapter(String[] dataArgs){
-            dataSource = dataArgs;
+        public SimpleRVAdapter(String[] dataArgs, Context cx){
+
+            dataSource = cx.getResources().getStringArray(R.array.testTexts);
         }
 
         @Override
