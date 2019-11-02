@@ -8,33 +8,81 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link WallFragment.OnFragmentInteractionListener} interface
+ *  interface
  * to handle interaction events.
- * Use the {@link WallFragment#newInstance} factory method to
+ * Use the factory method to
  * create an instance of this fragment.
  */
-public class WallFragment extends Fragment {
-    RecyclerView mRecyclerView;
+public class WallFragment extends Fragment /*implements OnFragmentInteractionListener*/ {
+
+    String[] strings = {"1", "2", "3", "4", "5", "6", "7"};
+
+    public WallFragment() {}
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        RecyclerView rv = new RecyclerView(getContext());
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setAdapter(new SimpleRVAdapter(strings));
+        return rv;
+    }
+
+    /**
+     * A Simple Adapter for the RecyclerView
+     */
+    public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
+        private String[] dataSource;
+        public SimpleRVAdapter(String[] dataArgs){
+            dataSource = dataArgs;
+        }
+
+        @Override
+        public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = new TextView(parent.getContext());
+            view.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+            SimpleViewHolder viewHolder = new SimpleViewHolder(view);
+            viewHolder.textView.setTextColor(getResources().getColor(R.color.colorAccent));
+            return viewHolder;
+        }
+
+        @Override
+        public void onBindViewHolder(SimpleViewHolder holder, int position) {
+            holder.textView.setText(dataSource[position]);
+        }
+
+        @Override
+        public int getItemCount() {
+            return dataSource.length;
+        }
+    }
+
+    /**
+     * A Simple ViewHolder for the RecyclerView
+     */
+    public static class SimpleViewHolder extends RecyclerView.ViewHolder{
+        public TextView textView;
+        public SimpleViewHolder(View itemView) {
+            super(itemView);
+            textView = (TextView) itemView;
+        }
+    }
+}
+    /*RecyclerView mRecyclerView;
     int[] mTextList;
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -51,11 +99,9 @@ public class WallFragment extends Fragment {
      * @return A new instance of fragment WallFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WallFragment newInstance(String param1, String param2) {
+    /*public static WallFragment newInstance(String param1, String param2) {
         WallFragment fragment = new WallFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,8 +110,6 @@ public class WallFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -81,9 +125,9 @@ public class WallFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
@@ -128,6 +172,12 @@ public class WallFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+}*/
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -138,9 +188,8 @@ public class WallFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    /*interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
+    }*/
 
-}
