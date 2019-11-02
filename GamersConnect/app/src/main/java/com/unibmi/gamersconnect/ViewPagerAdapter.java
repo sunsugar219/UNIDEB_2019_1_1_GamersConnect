@@ -13,7 +13,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     public ViewPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
-        mContext = context;
+        mContext=context;
     }
 
     @Override
@@ -21,9 +21,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return new LogInFragment();
         } else if (position == 1){
-            return new RegisterFragment();
-        } else {
             return new WallFragment();
+        } else /*if (position == 2) {
+            return new DetailFragment();
+        } else */{
+            return new RegisterFragment();
         }
     }
 
@@ -37,9 +39,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         if (position == 0){
             return mContext.getString(R.string.title_log_in);
         } else if (position == 1){
-            return mContext.getString(R.string.title_register);
-        }else {
             return mContext.getString(R.string.title_wall);
+        }else /*if (position == 2){
+            return "Detail";
+        } else */{
+            return mContext.getString(R.string.title_register);
         }
     }
 }
