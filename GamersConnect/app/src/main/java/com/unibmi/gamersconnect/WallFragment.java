@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -28,6 +30,11 @@ import android.widget.TextView;
 public class WallFragment extends Fragment{
     Context cx;
     RecyclerView rv;
+    boolean isNew;
+
+    Button newSend;
+
+    View newMsgLayout;
 
     public WallFragment() {}
 
@@ -35,16 +42,25 @@ public class WallFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        isNew = true;
 
         return inflater.inflate(R.layout.fragment_wall, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        newSend = view.findViewById(R.id.new_send_btn);
+        newMsgLayout = view.findViewById(R.id.new_msg_view);
         cx = getActivity().getApplicationContext();
         rv = view.findViewById(R.id.recyclerview);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new SimpleRVAdapter(cx));
+        newSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newOrSend();
+            }
+        });
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -91,6 +107,14 @@ public class WallFragment extends Fragment{
             super(itemView);
             textView = (TextView) itemView;
         }
+    }
+
+    public void newOrSend(){
+        if (isNew){
+            newSend.setText(R.string.send_text);
+            newMsgLayout.setVisibility(View.VISIBLE);
+        }
+
     }
 }
     /*RecyclerView mRecyclerView;
