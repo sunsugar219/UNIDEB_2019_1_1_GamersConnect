@@ -26,6 +26,8 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class WallFragment extends Fragment{
+    Context cx;
+    RecyclerView rv;
 
     public WallFragment() {}
 
@@ -33,11 +35,17 @@ public class WallFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Context cx = getActivity().getApplicationContext();
-        RecyclerView rv = new RecyclerView(getContext());
+
+        return inflater.inflate(R.layout.fragment_wall, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        cx = getActivity().getApplicationContext();
+        rv = view.findViewById(R.id.recyclerview);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         rv.setAdapter(new SimpleRVAdapter(cx));
-        return rv;
+        super.onViewCreated(view, savedInstanceState);
     }
 
     /**
@@ -55,11 +63,11 @@ public class WallFragment extends Fragment{
             ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             View view = new TextView(parent.getContext());
-            view.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+            view.setBackgroundColor(getResources().getColor(android.R.color.white));
             view.setLayoutParams(lp);
             view.setPaddingRelative(5, 5, 5, 5);
             SimpleViewHolder viewHolder = new SimpleViewHolder(view);
-            viewHolder.textView.setTextColor(getResources().getColor(R.color.colorAccent));
+            viewHolder.textView.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             return viewHolder;
         }
 
