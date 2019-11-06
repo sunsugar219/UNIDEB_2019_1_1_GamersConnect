@@ -17,6 +17,7 @@
     <string name="description">Description</string>
     <string name="new_post">New</string>
     <string name="send_text">Send</string>
+    <string name="search_contact">Search</string>
 
 
     <!-- strings for recyclerview test -->
