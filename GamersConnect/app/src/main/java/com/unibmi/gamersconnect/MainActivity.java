@@ -10,6 +10,8 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,9 +41,33 @@ public class MainActivity extends AppCompatActivity {
         tv.setMovementMethod(LinkMovementMethod.getInstance());*/
 
 
-                ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
-                adapterViewPager = new ViewPagerAdapter(this, getSupportFragmentManager());
-                vpPager.setAdapter(adapterViewPager);
+        ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
+        adapterViewPager = new ViewPagerAdapter(this, getSupportFragmentManager());
+        vpPager.setAdapter(adapterViewPager);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.itemProfile:
+                Toast.makeText(getApplicationContext(),"Item 1 Selected",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.itemWall:
+                Toast.makeText(getApplicationContext(),"Item 2 Selected",Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.itemContacts:
+                Toast.makeText(getApplicationContext(),"Item 3 Selected",Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
