@@ -2,7 +2,13 @@ package com.unibmi.gamersconnect;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -16,34 +22,31 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    FragmentPagerAdapter adapterViewPager;
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*TextView tv = findViewById(R.id.offer_text);
-        String text = "Not singed up yet? Register.";
-        SpannableString sstr = new SpannableString(text);
-        ClickableSpan cstr = new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View widget) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-                Toast.makeText(MainActivity.this, "Váltás", Toast.LENGTH_SHORT).show();
-
-            }
-        };
-        sstr.setSpan(cstr,19, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tv.setText(sstr);
-        tv.setMovementMethod(LinkMovementMethod.getInstance());*/
-
-
-        ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
-        adapterViewPager = new ViewPagerAdapter(this, getSupportFragmentManager());
-        vpPager.setAdapter(adapterViewPager);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
     }
 
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id){
@@ -68,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-        }
+        }*/
+@Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
-}
+    }
+
