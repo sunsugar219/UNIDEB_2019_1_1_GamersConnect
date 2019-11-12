@@ -7,10 +7,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +60,9 @@ public class WallFragment extends Fragment{
         newSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newOrSend();
+                Log.i("is it new? ", String.valueOf(isNew));
+
+                newOrSend(view);
             }
         });
         super.onViewCreated(view, savedInstanceState);
@@ -109,14 +113,19 @@ public class WallFragment extends Fragment{
         }
     }
 
-    public void newOrSend(){
+    public void newOrSend(View view){
         if (isNew){
             newSend.setText(R.string.send_text);
             newMsgLayout.setVisibility(View.VISIBLE);
+            isNew = false;
+        }else{
+            isNew = true;
+                    Navigation.findNavController(view).navigate(R.id.action_wallFragment_to_contactsFragment);
+                }
         }
 
     }
-}
+
     /*RecyclerView mRecyclerView;
     int[] mTextList;
 

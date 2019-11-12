@@ -21,7 +21,11 @@
         android:id="@+id/wallFragment"
         android:name="com.unibmi.gamersconnect.WallFragment"
         android:label="fragment_wall"
-        tools:layout="@layout/fragment_wall" />
+        tools:layout="@layout/fragment_wall" >
+        <action
+            android:id="@+id/action_wallFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.unibmi.gamersconnect.RegisterFragment"
@@ -31,4 +35,9 @@
             android:id="@+id/action_registerFragment_to_wallFragment"
             app:destination="@id/wallFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.unibmi.gamersconnect.ContactsFragment"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" />
 </navigation>
