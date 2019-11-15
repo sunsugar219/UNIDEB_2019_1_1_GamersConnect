@@ -1,4 +1,4 @@
-package com.unibmi.gamersconnect;
+package com.unibmi.gamersconnect.UI;
 
 
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.User;
 
 

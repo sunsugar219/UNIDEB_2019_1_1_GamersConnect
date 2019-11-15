@@ -1,4 +1,4 @@
-package com.unibmi.gamersconnect;
+package com.unibmi.gamersconnect.UI;
 
 import android.content.Context;
 import android.net.Uri;
@@ -21,8 +21,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.Message;
 import com.unibmi.gamersconnect.database.User;
 
@@ -79,6 +84,45 @@ public class WallFragment extends Fragment{
                 newOrSend(view);
             }
         });
+
+        // Attach a listener to read the data at our posts reference
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Message message = dataSnapshot.getValue(Message.class);
+                System.out.println(message);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
+                //Message newMessage = dataSnapshot.getValue(Message.class);
+                /*System.out.println("Message: " + newMessage.expectedDate);
+                System.out.println("Venue: " + newMessage.venue);
+                System.out.println("Description: " + newMessage.description);*/
+                //System.out.println("Message: "+ newMessage);
+                System.out.println("Previous Post ID: " + prevChildKey);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -114,6 +158,7 @@ public class WallFragment extends Fragment{
         public int getItemCount() {
             return dataSource.length;
         }
+
     }
 
     /**
@@ -134,6 +179,8 @@ public class WallFragment extends Fragment{
             isNew = false;
         }else{
             isNew = true;
+            newSend.setText(R.string.new_post);
+            newMsgLayout.setVisibility(View.GONE);
             date = dateInput.getText().toString();
             venue = venueInput.getText().toString();
             description = descriptionInput.getText().toString();

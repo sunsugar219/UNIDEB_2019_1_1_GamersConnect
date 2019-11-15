@@ -7,7 +7,7 @@
     android:background="#311B92"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".RegisterFragment">
+    tools:context=".UI.RegisterFragment">
 
     <LinearLayout
         android:id="@+id/email_layout"

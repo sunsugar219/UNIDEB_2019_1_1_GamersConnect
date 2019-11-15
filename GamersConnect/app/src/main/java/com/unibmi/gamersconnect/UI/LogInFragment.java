@@ -1,4 +1,4 @@
-package com.unibmi.gamersconnect;
+package com.unibmi.gamersconnect.UI;
 
 
 import android.os.Bundle;
@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.unibmi.gamersconnect.R;
 
 
 /**

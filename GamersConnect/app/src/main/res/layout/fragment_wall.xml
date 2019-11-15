@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark"
-    tools:context=".WallFragment">
+    tools:context=".UI.WallFragment">
 
     <LinearLayout
         android:id="@+id/new_msg_view"

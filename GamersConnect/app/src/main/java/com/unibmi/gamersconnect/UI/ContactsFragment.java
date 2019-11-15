@@ -1,4 +1,4 @@
-package com.unibmi.gamersconnect;
+package com.unibmi.gamersconnect.UI;
 
 import android.content.Context;
 import android.net.Uri;
@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.unibmi.gamersconnect.R;
 
 public class ContactsFragment extends Fragment {
     Context cx;

@@ -1,4 +1,4 @@
-package com.unibmi.gamersconnect;
+package com.unibmi.gamersconnect.UI;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.unibmi.gamersconnect.R;
 
 public class MyAdapter extends RecyclerView.Adapter<TextViewHolder> {
 
