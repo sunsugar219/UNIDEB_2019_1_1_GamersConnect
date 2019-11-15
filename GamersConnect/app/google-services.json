@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "9629734253",
+    "firebase_url": "https://com-unibmi-gamersconnect.firebaseio.com",
+    "project_id": "com-unibmi-gamersconnect",
+    "storage_bucket": "com-unibmi-gamersconnect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9629734253:android:f8d8e6a2e6971972a9b664",
+        "android_client_info": {
+          "package_name": "com.unibmi.gamersconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9629734253-8siem1ju8bb7k915e55rccrfjii4p0mc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXC6G4N7YkzSnYZGrvCrFU2F9pg77Mxp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9629734253-8siem1ju8bb7k915e55rccrfjii4p0mc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
