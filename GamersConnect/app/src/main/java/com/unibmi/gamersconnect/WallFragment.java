@@ -17,8 +17,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.unibmi.gamersconnect.database.Message;
+import com.unibmi.gamersconnect.database.User;
 
 
 /**
@@ -30,22 +36,27 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 public class WallFragment extends Fragment{
+    private DatabaseReference mDatabase;
     Context cx;
     RecyclerView rv;
     boolean isNew;
-
     Button newSend;
-
     View newMsgLayout;
 
+    String date;
+    String venue;
+    String description;
+
+    EditText dateInput;
+    EditText venueInput;
+    EditText descriptionInput;
+
     public WallFragment() {}
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         isNew = true;
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         return inflater.inflate(R.layout.fragment_wall, container, false);
     }
 
@@ -53,6 +64,9 @@ public class WallFragment extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         newSend = view.findViewById(R.id.new_send_btn);
         newMsgLayout = view.findViewById(R.id.new_msg_view);
+        dateInput = view.findViewById(R.id.msg_date);
+        venueInput = view.findViewById(R.id.msg_place);
+        descriptionInput = view.findViewById(R.id.msg_description);
         cx = getActivity().getApplicationContext();
         rv = view.findViewById(R.id.recyclerview);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -120,9 +134,18 @@ public class WallFragment extends Fragment{
             isNew = false;
         }else{
             isNew = true;
-                    Navigation.findNavController(view).navigate(R.id.action_wallFragment_to_contactsFragment);
+            date = dateInput.getText().toString();
+            venue = venueInput.getText().toString();
+            description = descriptionInput.getText().toString();
+            writeNewMessage(date, venue, description);
                 }
         }
+
+    private void writeNewMessage(String date, String venue, String description) {
+        Message message = new Message(date, venue, description);
+
+        mDatabase.child("messages").push().setValue(message);
+    }
 
     }
 
