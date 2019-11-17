@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.unibmi.gamersconnect.UI.ContactsFragment;
+import com.unibmi.gamersconnect.UI.EditProfileFragment;
 import com.unibmi.gamersconnect.UI.LogInFragment;
 import com.unibmi.gamersconnect.UI.RegisterFragment;
 import com.unibmi.gamersconnect.UI.WallFragment;
@@ -122,8 +123,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_login:
                 fragment = new LogInFragment();
                 break;
+            case R.id.nav_editProfile:
+                fragment = new EditProfileFragment();
+                break;
             case R.id.nav_contacts:
                 fragment = new ContactsFragment();
+
         }
 
         //replacing the fragment
