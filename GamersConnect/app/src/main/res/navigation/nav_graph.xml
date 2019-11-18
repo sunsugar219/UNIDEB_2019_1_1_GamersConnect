@@ -32,12 +32,21 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
-            android:id="@+id/action_registerFragment_to_wallFragment"
-            app:destination="@id/wallFragment" />
+            android:id="@+id/action_registerFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactsFragment"
         android:name="com.unibmi.gamersconnect.UI.ContactsFragment"
         android:label="fragment_contacts"
         tools:layout="@layout/fragment_contacts" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.unibmi.gamersconnect.UI.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_wallFragment"
+            app:destination="@id/wallFragment" />
+    </fragment>
 </navigation>
