@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //add this line to display menu1 when the activity is loaded
-        displaySelectedScreen(R.id.nav_login);
     }
     public void disableDrawer(){
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -118,14 +117,8 @@ public class MainActivity extends AppCompatActivity
 
         //initializing the fragment object which is selected
         switch (itemId) {
-            case R.id.nav_register:
-                fragment = new RegisterFragment();
-                break;
             case R.id.nav_wall:
                 fragment = new WallFragment();
-                break;
-            case R.id.nav_login:
-                fragment = new LogInFragment();
                 break;
             case R.id.nav_editProfile:
                 fragment = new EditProfileFragment();
