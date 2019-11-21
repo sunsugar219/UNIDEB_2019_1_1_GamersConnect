@@ -31,6 +31,7 @@
     <string name="new_post">New</string>
     <string name="send_text">Send</string>
     <string name="search_contact">Search</string>
+    <string name="required">This field is required.</string>
 
 
     <!-- strings for recyclerview test -->
