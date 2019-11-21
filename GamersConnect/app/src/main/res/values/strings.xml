@@ -51,6 +51,7 @@
     <string name="testText14">sbdgoiebévtitbeasbdg oiebévtitbeasbdgoieb évtitbeasbdgoi ebévtitbeasbdgoiebévtitbeas bdgoiebévtitbea</string>
     <string name="testText15">sbdgoiebévtit besbdgoiebévtitbea sbdgoiebévtitbea sbdgoiebévtitbeaa</string>
     <string name="testText16">sbdgoiebévtitb esbdgoiebévtitbeasbd goiebévtitbeasbdgoi ebévtitbeasbdgoiebévti tbeasbdgoiebévtitbeaa</string>
+    <string name="edit_profile">Edit Profile</string>
 
     <string-array name="testTexts">
         <item>@string/testText1</item>

@@ -1,11 +1,13 @@
 package com.unibmi.gamersconnect.UI;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -32,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.unibmi.gamersconnect.MainActivity;
 import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.Message;
 import com.unibmi.gamersconnect.database.User;
@@ -50,6 +53,7 @@ import java.util.Map;
  */
 public class WallFragment extends Fragment{
     private DatabaseReference mDatabase;
+    private MainActivity MA;
     Context cx;
     RecyclerView rv;
     boolean isNew;
@@ -70,9 +74,17 @@ public class WallFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         isNew = true;
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        return inflater.inflate(R.layout.fragment_wall, container, false);
+        return  inflater.inflate(R.layout.fragment_wall, container, false);
     }
-
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            MA = (MainActivity) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement MyInterface");
+        }
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         newSend = view.findViewById(R.id.new_send_btn);
@@ -92,7 +104,7 @@ public class WallFragment extends Fragment{
                 newOrSend(view);
             }
         });
-
+        MA.disableDrawer();
         // Attach a listener to read the data at our posts reference
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
