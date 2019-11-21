@@ -1,39 +1,41 @@
 package com.unibmi.gamersconnect.database;
 
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import java.util.Map;
 
 @IgnoreExtraProperties
 public class Message {
-    private String messageId;
-
-    public String username;
-    public String expectedDate;
+    public String uid;
+    public String author;
+    public String date;
     public String venue;
     public String description;
-    public long timeOfPost;
 
     public Message() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        // Default constructor required for calls to DataSnapshot.getValue(Message.class)
     }
 
-    /*public User(String username, String email) {
-        this.username = username;
-        this.email = email;
-        this.description = "";
-    }*/
-    public Message(String date, String venue) {
-        this.username = "testUser";
-        this.expectedDate = date;
-        this.venue = venue;
-        this.description = "";
-        this.timeOfPost = System.currentTimeMillis();
-    }
-    public Message(String date, String venue, String description) {
-        this.username = "testUser";
-        this.expectedDate = date;
+    public Message(String uid, String author, String date, String venue, String description) {
+        this.uid = uid;
+        this.author = author;
+        this.date = date;
         this.venue = venue;
         this.description = description;
-        this.timeOfPost = System.currentTimeMillis();
     }
 
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("uid", uid);
+        result.put("author", author);
+        result.put("date", date);
+        result.put("venue", venue);
+        result.put("description", description);
+        return result;
+    }
 }

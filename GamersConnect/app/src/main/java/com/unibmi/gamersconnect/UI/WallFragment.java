@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +35,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.Message;
 import com.unibmi.gamersconnect.database.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -178,21 +186,72 @@ public class WallFragment extends Fragment{
             newMsgLayout.setVisibility(View.VISIBLE);
             isNew = false;
         }else{
+            date = dateInput.getText().toString().trim();
+            venue = venueInput.getText().toString().trim();
+            description = descriptionInput.getText().toString().trim();
+            //submitMessage();
+            writeNewMessage(date, venue, description);
             isNew = true;
             newSend.setText(R.string.new_post);
             newMsgLayout.setVisibility(View.GONE);
-            date = dateInput.getText().toString();
-            venue = venueInput.getText().toString();
-            description = descriptionInput.getText().toString();
-            writeNewMessage(date, venue, description);
                 }
         }
 
     private void writeNewMessage(String date, String venue, String description) {
-        Message message = new Message(date, venue, description);
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String uid = user.getUid();
+        final String uemail = user.getEmail();
 
+        if (validateForm()){
+        Message message = new Message(uid, uemail, date, venue, description);
         mDatabase.child("messages").push().setValue(message);
+        mDatabase.child("user_messages"+uid).push().setValue(message);
+        }
+
+
+        Navigation.findNavController(getView()).navigate(R.id.wallFragment);
     }
+
+    private boolean validateForm() {
+        if (TextUtils.isEmpty(date)) {
+            dateInput.setError(getString(R.string.required));
+            return false;
+        } else if (TextUtils.isEmpty(venue)) {
+            venueInput.setError(getString(R.string.required));
+            return false;
+        } else if (TextUtils.isEmpty(description)) {
+            description = "";
+            return false;
+        } else {
+            dateInput.setError(null);
+            venueInput.setError(null);
+            return true;
+        }
+    }
+
+    private void setEditingEnabled(boolean enabled) {
+        dateInput.setEnabled(enabled);
+        venueInput.setEnabled(enabled);
+        descriptionInput.setEnabled(enabled);
+    }
+
+    /*private void writeNewMessage(FirebaseUser user, String date, String venue, String description) {
+        // Create new post at /user-posts/$userid/$postid
+        // and at /posts/$postid simultaneously
+        String key = mDatabase.child("messages").push().getKey();
+        Log.i("WallKey: ", key);
+        String uid = user.getUid();
+        String uemail = user.getEmail();
+        Message message = new Message(uid, uemail, date, venue, description);
+
+        Map<String, Object> postValues = message.toMap();
+        Log.i("postvalues: ", postValues.toString());
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/messages/" + key, postValues);
+        childUpdates.put("/user-messages/" + uid + "/" + key, postValues);
+        mDatabase.updateChildren(childUpdates);
+
+    }*/
 
     }
 
