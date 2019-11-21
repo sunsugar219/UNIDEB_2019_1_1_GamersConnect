@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +33,7 @@ import com.unibmi.gamersconnect.UI.WallFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private AppBarConfiguration mAppBarConfiguration;
+    private FirebaseAuth mAuth;
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("message");
@@ -103,7 +105,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            mAuth = FirebaseAuth.getInstance();
+            mAuth.signOut();
+            Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.logInFragment);
             return true;
         }
 
