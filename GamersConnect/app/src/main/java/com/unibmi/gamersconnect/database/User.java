@@ -19,17 +19,13 @@ public class User {
         this.email = email;
         this.description = "";
     }*/
-    public User(String username, String email, String description) {
-        this.username = username;
-        this.email = email;
-        this.description = description;
-    }
 
-    public User(String email, String password) {
-        this.username = "username";
+    public User(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.description = "";
     }
+
 
 }
