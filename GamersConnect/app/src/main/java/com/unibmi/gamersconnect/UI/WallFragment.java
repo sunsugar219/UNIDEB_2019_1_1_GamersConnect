@@ -22,9 +22,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -33,6 +37,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.unibmi.gamersconnect.MainActivity;
 import com.unibmi.gamersconnect.R;
@@ -51,7 +56,7 @@ import java.util.Map;
  * Use the factory method to
  * create an instance of this fragment.
  */
-public class WallFragment extends Fragment{
+public class WallFragment extends Fragment {
     private DatabaseReference mDatabase;
     private MainActivity MA;
     Context cx;
@@ -68,14 +73,19 @@ public class WallFragment extends Fragment{
     EditText venueInput;
     EditText descriptionInput;
 
-    public WallFragment() {}
+    private LinearLayoutManager linearLayoutManager;
+    private FirebaseRecyclerAdapter adapter;
+
+    public WallFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         isNew = true;
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        return  inflater.inflate(R.layout.fragment_wall, container, false);
+        return inflater.inflate(R.layout.fragment_wall, container, false);
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -85,6 +95,7 @@ public class WallFragment extends Fragment{
             throw new ClassCastException(activity.toString() + " must implement MyInterface");
         }
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         newSend = view.findViewById(R.id.new_send_btn);
@@ -93,9 +104,13 @@ public class WallFragment extends Fragment{
         venueInput = view.findViewById(R.id.msg_place);
         descriptionInput = view.findViewById(R.id.msg_description);
         cx = getActivity().getApplicationContext();
+        linearLayoutManager = new LinearLayoutManager(cx);
         rv = view.findViewById(R.id.recyclerview);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.setAdapter(new SimpleRVAdapter(cx));
+        /*rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setAdapter(new SimpleRVAdapter(cx));*/
+        rv.setLayoutManager(linearLayoutManager);
+        //rv.setHasFixedSize(true);
+        fetch();
         newSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +134,7 @@ public class WallFragment extends Fragment{
             }
         });
 
-        mDatabase.addChildEventListener(new ChildEventListener() {
+        /*mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
                 //Message newMessage = dataSnapshot.getValue(Message.class);
@@ -127,77 +142,36 @@ public class WallFragment extends Fragment{
                 System.out.println("Venue: " + newMessage.venue);
                 System.out.println("Description: " + newMessage.description);*/
                 //System.out.println("Message: "+ newMessage);
-                System.out.println("Previous Post ID: " + prevChildKey);
+               /* System.out.println("Previous Post ID: " + prevChildKey);
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
+            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
+            }
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
+            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
+            }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });*/
 
         super.onViewCreated(view, savedInstanceState);
     }
 
-    /**
-     * A Simple Adapter for the RecyclerView
-     */
-    public class SimpleRVAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
-        private String[] dataSource;
-        public SimpleRVAdapter(Context cx){
 
-            dataSource = cx.getResources().getStringArray(R.array.testTexts);
-        }
-
-        @Override
-        public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            View view = new TextView(parent.getContext());
-            view.setBackgroundColor(getResources().getColor(android.R.color.white));
-            view.setLayoutParams(lp);
-            view.setPaddingRelative(5, 5, 5, 5);
-            SimpleViewHolder viewHolder = new SimpleViewHolder(view);
-            viewHolder.textView.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-            return viewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(SimpleViewHolder holder, int position) {
-            holder.textView.setText(dataSource[position]);
-        }
-
-        @Override
-        public int getItemCount() {
-            return dataSource.length;
-        }
-
-    }
-
-    /**
-     * A Simple ViewHolder for the RecyclerView
-     */
-    public static class SimpleViewHolder extends RecyclerView.ViewHolder{
-        public TextView textView;
-        public SimpleViewHolder(View itemView) {
-            super(itemView);
-            textView = (TextView) itemView;
-        }
-    }
-
-    public void newOrSend(View view){
-        if (isNew){
+    public void newOrSend(View view) {
+        if (isNew) {
             newSend.setText(R.string.send_text);
             newMsgLayout.setVisibility(View.VISIBLE);
             isNew = false;
-        }else{
+        } else {
             date = dateInput.getText().toString().trim();
             venue = venueInput.getText().toString().trim();
             description = descriptionInput.getText().toString().trim();
@@ -206,20 +180,34 @@ public class WallFragment extends Fragment{
             isNew = true;
             newSend.setText(R.string.new_post);
             newMsgLayout.setVisibility(View.GONE);
-                }
         }
+    }
 
     private void writeNewMessage(String date, String venue, String description) {
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
         final String uemail = user.getEmail();
+        Query query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("users").child(uid);
+       // query.orderByChild("")
 
-        if (validateForm()){
-        Message message = new Message(uid, uemail, date, venue, description);
-        mDatabase.child("messages").push().setValue(message);
-        mDatabase.child("user_messages"+uid).push().setValue(message);
+                      /*  .setQuery(query, new SnapshotParser<Message>() {
+                            @NonNull
+                            @Override
+                            public Message parseSnapshot(@NonNull DataSnapshot snapshot) {
+                                return new Message(snapshot.child("id").getValue().toString(),
+                                        snapshot.child("title").getValue().toString(),
+                                        snapshot.child("desc").getValue().toString());
+                            }
+                        })
+                        .build();*/
+        int picIndex = 1;
+        if (validateForm()) {
+            Message message = new Message(uid, picIndex, uemail, date, venue, description);
+            mDatabase.child("messages").push().setValue(message);
+            mDatabase.child("user_messages" + uid).push().setValue(message);
         }
-
 
         Navigation.findNavController(getView()).navigate(R.id.wallFragment);
     }
@@ -247,135 +235,140 @@ public class WallFragment extends Fragment{
         descriptionInput.setEnabled(enabled);
     }
 
-    /*private void writeNewMessage(FirebaseUser user, String date, String venue, String description) {
-        // Create new post at /user-posts/$userid/$postid
-        // and at /posts/$postid simultaneously
-        String key = mDatabase.child("messages").push().getKey();
-        Log.i("WallKey: ", key);
-        String uid = user.getUid();
-        String uemail = user.getEmail();
-        Message message = new Message(uid, uemail, date, venue, description);
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public LinearLayout root;
+        ImageView mAuthorImage;
+        TextView mAuthorText, mMessageVenue, mMessageDate, mMessageDescription;
 
-        Map<String, Object> postValues = message.toMap();
-        Log.i("postvalues: ", postValues.toString());
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/messages/" + key, postValues);
-        childUpdates.put("/user-messages/" + uid + "/" + key, postValues);
-        mDatabase.updateChildren(childUpdates);
+        public ViewHolder(View itemView) {
+            super(itemView);
+            root = itemView.findViewById(R.id.list_item_layout);
+            mAuthorImage = itemView.findViewById(R.id.author_image_in_list);
+            mAuthorText = itemView.findViewById(R.id.author_text_in_list);
+            mMessageVenue = itemView.findViewById(R.id.message_venue_string);
+            mMessageDate = itemView.findViewById(R.id.message_date);
+            mMessageDescription = itemView.findViewById(R.id.message_description);
 
-    }*/
+        }
 
-    }
+        public void setImgAuthor(int imgIndex) {
+            switch (imgIndex){
+                case 1:
+                    mAuthorImage.setImageResource(R.drawable.pic1);
+                    break;
+                case 2:
+                    mAuthorImage.setImageResource(R.drawable.pic2);
+                    break;
+                    case 3:
+                    mAuthorImage.setImageResource(R.drawable.pic3);
+                    break;
+                    case 4:
+                    mAuthorImage.setImageResource(R.drawable.pic4);
+                    break;
+                    case 5:
+                    mAuthorImage.setImageResource(R.drawable.pic5);
+                    break;
+                    case 6:
+                    mAuthorImage.setImageResource(R.drawable.pic6);
+                    break;
+                    case 7:
+                    mAuthorImage.setImageResource(R.drawable.pic7);
+                    break;
+                    case 8:
+                    mAuthorImage.setImageResource(R.drawable.pic8);
+                    break;
+                    case 9:
+                    mAuthorImage.setImageResource(R.drawable.pic9);
+                    break;
+                    default:
+                        mAuthorImage.setImageResource(R.drawable.pic9);
+                        break;
 
-    /*RecyclerView mRecyclerView;
-    int[] mTextList;
+            }
+        }
 
-    private OnFragmentInteractionListener mListener;
+        public void setTxtAuthor(String string) {
+            mAuthorText.setText(string);
+        }
 
-    public WallFragment() {
-        // Required empty public constructor
-    }
+        public void setTxtVenue(String string) {
+            mMessageVenue.setText(string);
+        }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WallFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    /*public static WallFragment newInstance(String param1, String param2) {
-        WallFragment fragment = new WallFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
+        public void setTxtDate(String string) {
+            mMessageDate.setText(string);
+        }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+        public void setTxtDesc(String string) {
+            mMessageDescription.setText(string);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wall, container, false);
-    }
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }*/
-
-   /* @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getActivity(), 1);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
-
-        mTextList = new int[]{R.string.testText1,
-                R.string.testText2,
-                R.string.testText3,
-                R.string.testText4,
-                R.string.testText5,
-                R.string.testText6,
-                R.string.testText7,
-                R.string.testText8,
-                R.string.testText9,
-                R.string.testText10,
-                R.string.testText11,
-                R.string.testText12,
-                R.string.testText13,
-                R.string.testText14,
-                R.string.testText15,
-                R.string.testText16};
-
-        MyAdapter myAdapter = new MyAdapter(getActivity(), mTextList);
-        mRecyclerView.setAdapter(myAdapter);
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    private void fetch() {
+        Log.i("fetch: ", "right after start");
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String uid = user.getUid();
+
+        //egyelőre csak a saját üziket mutatja, mivel a kontaktok még nincsenek készen
+        Query query = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("user_messages" + uid);
+
+        FirebaseRecyclerOptions<Message> options =
+                new FirebaseRecyclerOptions.Builder<Message>()
+                        .setQuery(query, new SnapshotParser<Message>() {
+                            @NonNull
+                            @Override
+                            public Message parseSnapshot(@NonNull DataSnapshot snapshot) {
+                                return new Message(uid, 1,
+                                        snapshot.child("author").getValue().toString(),
+                                        snapshot.child("date").getValue().toString(),
+                                        snapshot.child("venue").getValue().toString(),
+                                        snapshot.child("description").getValue().toString());
+
+                            }
+                        })
+                        .build();
+
+        adapter = new FirebaseRecyclerAdapter<Message, ViewHolder>(options) {
+            @Override
+            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.list_item_message, parent, false);
+
+                return new ViewHolder(view);
+            }
+
+
+            @Override
+            protected void onBindViewHolder(ViewHolder holder, final int position, Message message) {
+                holder.setImgAuthor(message.getPicIndex());
+                holder.setTxtAuthor(message.getAuthor());
+                holder.setTxtDate(message.getDate());
+                holder.setTxtVenue(message.getVenue());
+                holder.setTxtDesc(message.getDescription());
+
+
+            }
+
+        };
+
+        rv.setAdapter(adapter);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
-    }
-}*/
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    /*interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }*/
+}
 

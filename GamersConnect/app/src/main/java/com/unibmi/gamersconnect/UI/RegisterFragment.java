@@ -99,6 +99,7 @@ public class RegisterFragment extends Fragment {
         User user = new User(username, email, password);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("users").child(firebaseUser.getUid()).setValue(user);
+        mDatabase.child("emailToUid").child(email).setValue(firebaseUser.getUid());
         Navigation.findNavController(getView()).navigate(R.id.editProfileFragment);
 
     }
