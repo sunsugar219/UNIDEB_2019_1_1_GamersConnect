@@ -9,6 +9,7 @@ public class User {
     public String email;
     public String password;
     public String description;
+    public int profilePic;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -24,8 +25,13 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.description = "";
     }
 
+    public int getProfilePic() {
+        return profilePic;
+    }
 
+    public void setProfilePic(int profilePic) {
+        this.profilePic = profilePic;
+    }
 }
