@@ -2,15 +2,11 @@ package com.unibmi.gamersconnect.UI;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,15 +20,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,10 +35,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.unibmi.gamersconnect.MainActivity;
 import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.Message;
-import com.unibmi.gamersconnect.database.User;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -58,6 +47,8 @@ import java.util.Map;
  */
 public class WallFragment extends Fragment {
     private DatabaseReference mDatabase;
+    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
     private MainActivity MA;
     Context cx;
     RecyclerView rv;
@@ -83,6 +74,7 @@ public class WallFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         isNew = true;
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
         return inflater.inflate(R.layout.fragment_wall, container, false);
     }
 
@@ -105,11 +97,12 @@ public class WallFragment extends Fragment {
         descriptionInput = view.findViewById(R.id.msg_description);
         cx = getActivity().getApplicationContext();
         linearLayoutManager = new LinearLayoutManager(cx);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         rv = view.findViewById(R.id.recyclerview);
-        /*rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv.setAdapter(new SimpleRVAdapter(cx));*/
         rv.setLayoutManager(linearLayoutManager);
         //rv.setHasFixedSize(true);
+
         fetch();
         newSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +114,19 @@ public class WallFragment extends Fragment {
         });
         MA.disableDrawer();
         // Attach a listener to read the data at our posts reference
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        mDatabase.child("user_messages" + user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Message message = dataSnapshot.getValue(Message.class);
+                System.out.println(message);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+        mDatabase.child("messages").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Message message = dataSnapshot.getValue(Message.class);
@@ -165,6 +170,27 @@ public class WallFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String uid = user.getUid();
+        mDatabase.child("user-messages"+uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Message message = dataSnapshot.getValue(Message.class);
+                if (dataSnapshot.exists()) {
+                    Log.i("onresume: ", "datasnapshot exists");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+    }
 
     public void newOrSend(View view) {
         if (isNew) {
@@ -184,7 +210,6 @@ public class WallFragment extends Fragment {
     }
 
     private void writeNewMessage(String date, String venue, String description) {
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
         final String uemail = user.getEmail();
         Query query = FirebaseDatabase.getInstance()
@@ -209,7 +234,20 @@ public class WallFragment extends Fragment {
             mDatabase.child("user_messages" + uid).push().setValue(message);
         }
 
-        Navigation.findNavController(getView()).navigate(R.id.wallFragment);
+        mDatabase.child("user-messages"+uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Message message = dataSnapshot.getValue(Message.class);
+                if (dataSnapshot.exists()) {
+                    Log.i("onresume: ", "datasnapshot exists");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
     }
 
     private boolean validateForm() {
@@ -360,12 +398,8 @@ public class WallFragment extends Fragment {
                 holder.setTxtDate(message.getDate());
                 holder.setTxtVenue(message.getVenue());
                 holder.setTxtDesc(message.getDescription());
-
-
             }
-
         };
-
         rv.setAdapter(adapter);
     }
 
