@@ -89,8 +89,8 @@ public class EditProfileFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 DatabaseReference actUser = mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-                actUser.updateChildren(pic);
+                Log.i("avatarButton: ", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                actUser.child("profilePic").setValue(pic.get("profilePic"));
             }
         });
 
