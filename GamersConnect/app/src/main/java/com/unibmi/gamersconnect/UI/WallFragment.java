@@ -141,33 +141,6 @@ public class WallFragment extends Fragment {
             }
         });
 
-        /*mDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                //Message newMessage = dataSnapshot.getValue(Message.class);
-                /*System.out.println("Message: " + newMessage.expectedDate);
-                System.out.println("Venue: " + newMessage.venue);
-                System.out.println("Description: " + newMessage.description);*/
-                //System.out.println("Message: "+ newMessage);
-               /* System.out.println("Previous Post ID: " + prevChildKey);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });*/
 
         super.onViewCreated(view, savedInstanceState);
     }
@@ -252,12 +225,7 @@ public class WallFragment extends Fragment {
 
                           }
                       });
-        /*int picIndex = 1;
-        if (validateForm()) {
-            Message message = new Message(uid, picIndex, uemail, date, venue, description);
-            mDatabase.child("messages").push().setValue(message);
-            mDatabase.child("user_messages" + uid).push().setValue(message);
-        }*/
+
 
         mDatabase.child("user-messages"+uid).addValueEventListener(new ValueEventListener() {
             @Override

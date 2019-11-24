@@ -20,11 +20,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.unibmi.gamersconnect.R;
+import com.unibmi.gamersconnect.database.Message;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 
@@ -36,6 +43,8 @@ public class EditProfileFragment extends Fragment{
             R.drawable.pic9};
     private Button avatarChange, nameChange, emailChange, pwdChange;
     Map<String, Object> pic = new HashMap<>();
+    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
     public EditProfileFragment() {
 
@@ -60,6 +69,38 @@ public class EditProfileFragment extends Fragment{
         nameChange = v.findViewById(R.id.button_change_name);
         emailChange = v.findViewById(R.id.button_change_email);
         pwdChange = v.findViewById(R.id.button_change_pwd);
+
+        Query query = FirebaseDatabase.getInstance()
+                .getReference("users");
+//                .child("users").child(uid);
+
+        final String uid = user.getUid();
+        query.orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()){
+                    Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+                    while (iter.hasNext()){
+                        DataSnapshot snap = iter.next();
+                        Long picture = (Long)(snap.child("profilePic").getValue());
+                        Integer picIndex = picture != null ? picture.intValue() : null;
+                        Log.i("SetBigResource:", String.valueOf(picIndex));
+                        if (picIndex<1 || picIndex >9){
+                            picIndex = 1;
+                            big.setImageResource(imageArray[picIndex-1]);
+
+                        }else {
+                            big.setImageResource(imageArray[picIndex-1]);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         // Inflate the layout for this fragment
         return v;
