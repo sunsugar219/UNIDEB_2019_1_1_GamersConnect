@@ -13,6 +13,7 @@ import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.User;
+
+import java.util.Map;
 
 
 /**
@@ -82,21 +85,11 @@ public class LogInFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (mAuth.getCurrentUser() != null) {
-            onAuthSuccess(mAuth.getCurrentUser());
+            Navigation.findNavController(getView()).navigate(R.id.wallFragment);
         }
     }
 
     private void onAuthSuccess(FirebaseUser firebaseUser) {
-        String email = firebaseUser.getEmail();
-        String username = email;
-        if (email != null && email.contains("@")) {
-            username = email.split("@")[0];
-        }
-        String password = passwordEdit.getText().toString().trim();
-
-        User user = new User(username, email, password);
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("users").child(firebaseUser.getUid()).setValue(user);
         Navigation.findNavController(getView()).navigate(R.id.wallFragment);
 
     }

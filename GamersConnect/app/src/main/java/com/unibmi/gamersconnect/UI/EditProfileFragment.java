@@ -139,6 +139,6 @@ public class EditProfileFragment extends Fragment{
 
     private void imageInput (int index){
         big.setImageResource(imageArray[index]);
-        pic.put("profilePic", index);
+        pic.put("profilePic", index+1);
     }
 }
