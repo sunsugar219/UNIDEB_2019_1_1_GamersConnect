@@ -36,6 +36,8 @@ import com.unibmi.gamersconnect.MainActivity;
 import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.Message;
 
+import java.util.Iterator;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -209,30 +211,53 @@ public class WallFragment extends Fragment {
         }
     }
 
-    private void writeNewMessage(String date, String venue, String description) {
+    private void writeNewMessage(final String date, final String venue, final String description) {
         final String uid = user.getUid();
         final String uemail = user.getEmail();
         Query query = FirebaseDatabase.getInstance()
-                .getReference()
-                .child("users").child(uid);
-       // query.orderByChild("")
+                .getReference("users");
+//                .child("users").child(uid);
 
-                      /*  .setQuery(query, new SnapshotParser<Message>() {
-                            @NonNull
-                            @Override
-                            public Message parseSnapshot(@NonNull DataSnapshot snapshot) {
-                                return new Message(snapshot.child("id").getValue().toString(),
-                                        snapshot.child("title").getValue().toString(),
-                                        snapshot.child("desc").getValue().toString());
-                            }
-                        })
-                        .build();*/
-        int picIndex = 1;
+
+                      query.orderByKey().equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                          @Override
+                          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                              if (dataSnapshot.hasChildren()){
+                                  Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+                                  while (iter.hasNext()){
+                                      DataSnapshot snap = iter.next();
+                                      Long picture = (Long)(snap.child("profilePic").getValue());
+                                      Integer picIndex = picture != null ? picture.intValue() : null;
+                                      Log.i("Wall picindex in new:", String.valueOf(picIndex));
+                                      if (picIndex<1 || picIndex >9){
+                                          picIndex = 1;
+                                          if (validateForm()) {
+                                              Message message = new Message(uid, picIndex, uemail, date, venue, description);
+                                              mDatabase.child("messages").push().setValue(message);
+                                              mDatabase.child("user_messages" + uid).push().setValue(message);
+                                          }
+                                      }else {
+                                          if (validateForm()) {
+                                              Message message = new Message(uid, picIndex, uemail, date, venue, description);
+                                              mDatabase.child("messages").push().setValue(message);
+                                              mDatabase.child("user_messages" + uid).push().setValue(message);
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+
+                          @Override
+                          public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                          }
+                      });
+        /*int picIndex = 1;
         if (validateForm()) {
             Message message = new Message(uid, picIndex, uemail, date, venue, description);
             mDatabase.child("messages").push().setValue(message);
             mDatabase.child("user_messages" + uid).push().setValue(message);
-        }
+        }*/
 
         mDatabase.child("user-messages"+uid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -259,7 +284,7 @@ public class WallFragment extends Fragment {
             return false;
         } else if (TextUtils.isEmpty(description)) {
             description = "";
-            return false;
+            return true;
         } else {
             dateInput.setError(null);
             venueInput.setError(null);
@@ -297,28 +322,28 @@ public class WallFragment extends Fragment {
                 case 2:
                     mAuthorImage.setImageResource(R.drawable.pic2);
                     break;
-                    case 3:
+                case 3:
                     mAuthorImage.setImageResource(R.drawable.pic3);
                     break;
-                    case 4:
+                case 4:
                     mAuthorImage.setImageResource(R.drawable.pic4);
                     break;
-                    case 5:
+                case 5:
                     mAuthorImage.setImageResource(R.drawable.pic5);
                     break;
-                    case 6:
+                case 6:
                     mAuthorImage.setImageResource(R.drawable.pic6);
                     break;
-                    case 7:
+                case 7:
                     mAuthorImage.setImageResource(R.drawable.pic7);
                     break;
-                    case 8:
+                case 8:
                     mAuthorImage.setImageResource(R.drawable.pic8);
                     break;
-                    case 9:
+                case 9:
                     mAuthorImage.setImageResource(R.drawable.pic9);
                     break;
-                    default:
+                default:
                         mAuthorImage.setImageResource(R.drawable.pic9);
                         break;
 
@@ -371,11 +396,20 @@ public class WallFragment extends Fragment {
                             @NonNull
                             @Override
                             public Message parseSnapshot(@NonNull DataSnapshot snapshot) {
-                                return new Message(uid, 1,
-                                        snapshot.child("author").getValue().toString(),
-                                        snapshot.child("date").getValue().toString(),
-                                        snapshot.child("venue").getValue().toString(),
-                                        snapshot.child("description").getValue().toString());
+                                if (snapshot.child("picIndex").getValue() != null) {
+                                    return new Message(uid,
+                                            Integer.valueOf(snapshot.child("picIndex").getValue().toString()),
+                                            snapshot.child("author").getValue().toString(),
+                                            snapshot.child("date").getValue().toString(),
+                                            snapshot.child("venue").getValue().toString(),
+                                            snapshot.child("description").getValue().toString());
+                                } else{
+                                    return new Message(uid, 9,
+                                            snapshot.child("author").getValue().toString(),
+                                            snapshot.child("date").getValue().toString(),
+                                            snapshot.child("venue").getValue().toString(),
+                                            snapshot.child("description").getValue().toString());
+                                }
 
                             }
                         })

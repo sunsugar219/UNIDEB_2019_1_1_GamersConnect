@@ -1,10 +1,14 @@
 package com.unibmi.gamersconnect.database;
 
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @IgnoreExtraProperties
 public class User {
-
+    private String uid;
     public String username;
     public String email;
     public String password;
@@ -34,4 +38,17 @@ public class User {
     public void setProfilePic(int profilePic) {
         this.profilePic = profilePic;
     }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("uid", uid);
+        result.put("username", username);
+        result.put("email", email);
+        result.put("password", password);
+        result.put("profilePic", profilePic);
+        result.put("description", description);
+        return result;
+    }
+
 }
