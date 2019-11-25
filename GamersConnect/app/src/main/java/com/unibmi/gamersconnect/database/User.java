@@ -31,6 +31,13 @@ public class User {
         this.password = password;
     }
 
+    public User(String username, int profilpicture) {
+        this.username = username;
+        this.profilePic = profilpicture;
+
+    }
+
+
     public int getProfilePic() {
         return profilePic;
     }

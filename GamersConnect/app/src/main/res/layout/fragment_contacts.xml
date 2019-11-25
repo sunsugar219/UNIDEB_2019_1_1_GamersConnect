@@ -35,7 +35,7 @@
         android:text="@string/search_contact"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerviewContacts"
         android:layout_marginStart="@dimen/horizontal_margin"
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:layout_width="match_parent"
