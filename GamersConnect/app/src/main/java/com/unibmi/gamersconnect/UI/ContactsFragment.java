@@ -68,6 +68,7 @@ public class ContactsFragment extends Fragment {
         //newMsgLayout = view.findViewById(R.id.new_msg_view);
         super.onViewCreated(view, savedInstanceState);
 
+
         cx = getActivity().getApplicationContext();
         linearLayoutManager = new LinearLayoutManager(cx);
         linearLayoutManager.setReverseLayout(true);
@@ -75,19 +76,20 @@ public class ContactsFragment extends Fragment {
         rv = view.findViewById(R.id.recyclerviewContacts);
         rv.setLayoutManager(linearLayoutManager);
 
+
         fetch();
 
-    mDatabase.child("users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            User user= dataSnapshot.getValue(User.class);
-        }
+        mDatabase.child("users").child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+            }
 
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-            System.out.println("The read failed: " + databaseError.getCode());
-        }
-    });
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
     }
 
     @Override
@@ -96,7 +98,7 @@ public class ContactsFragment extends Fragment {
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
-        mDatabase.child("users"+uid).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("users" + uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
@@ -122,14 +124,14 @@ public class ContactsFragment extends Fragment {
             root = itemView.findViewById(R.id.list_item_layout_contacts);
             mAuthorImage = itemView.findViewById(R.id.author_image_in_list);
             mAuthorText = itemView.findViewById(R.id.author_text_in_list);
-            mUserVenue = itemView.findViewById(R.id.user_venue_string);
+           /* mUserVenue = itemView.findViewById(R.id.author_text_in_list);
             muserDate = itemView.findViewById(R.id.user_date);
-            muserDescription = itemView.findViewById(R.id.user_description);
+            muserDescription = itemView.findViewById(R.id.user_description);*/
 
         }
 
         public void setImgContact(int imgIndex) {
-            switch (imgIndex){
+            switch (imgIndex) {
                 case 1:
                     mAuthorImage.setImageResource(R.drawable.pic1);
                     break;
@@ -167,16 +169,17 @@ public class ContactsFragment extends Fragment {
         public void setTxtContact(String string) {
             mAuthorText.setText(string);
         }
-
-    /**
-     * A Simple Adapter for the RecyclerView
-     */
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-
     }
+
+        /**
+         * A Simple Adapter for the RecyclerView
+         */
+        @Override
+        public void onStart() {
+            super.onStart();
+            adapter.startListening();
+
+        }
 
         @Override
         public void onStop() {
@@ -202,9 +205,9 @@ public class ContactsFragment extends Fragment {
                                 public User parseSnapshot(@NonNull DataSnapshot snapshot) {
                                     if (snapshot.child("picIndex").getValue() != null) {
                                         return new User(snapshot.child("username").getValue().toString(),
-                                                Integer.valueOf(snapshot.child("picIndex").getValue().toString());
-                                    } else{
-                                        return new User(snapshot.child("username").getValue().toString(),9);
+                                                Integer.valueOf(snapshot.child("picIndex").getValue().toString()));
+                                    } else {
+                                        return new User(snapshot.child("username").getValue().toString(), 9);
 
                                     }
 
@@ -224,11 +227,12 @@ public class ContactsFragment extends Fragment {
 
                 @Override
                 protected void onBindViewHolder(ContactsFragment.ViewHolder holder, final int position, User user) {
-                    holder.setImgContact(user.getPicIndex());
-                    holder.setTxtContact(user.getAuthor());
+                    holder.setImgContact(user.getProfilePic());
+                    holder.setTxtContact(user.getUsername());
 
                 }
             };
             rv.setAdapter(adapter);
         }
-}
+    }
+

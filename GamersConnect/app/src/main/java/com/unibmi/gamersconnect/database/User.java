@@ -41,9 +41,15 @@ public class User {
     public int getProfilePic() {
         return profilePic;
     }
+    public String getUsername() {
+        return username;
+    }
 
     public void setProfilePic(int profilePic) {
         this.profilePic = profilePic;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Exclude
