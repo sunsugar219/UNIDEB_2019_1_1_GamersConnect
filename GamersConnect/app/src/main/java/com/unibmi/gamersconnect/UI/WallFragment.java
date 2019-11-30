@@ -1,6 +1,7 @@
 package com.unibmi.gamersconnect.UI;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,7 +38,10 @@ import com.unibmi.gamersconnect.MainActivity;
 import com.unibmi.gamersconnect.R;
 import com.unibmi.gamersconnect.database.Message;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Locale;
 
 
 /**
@@ -61,6 +66,8 @@ public class WallFragment extends Fragment {
     String date;
     String venue;
     String description;
+
+    final Calendar myCalendar = Calendar.getInstance();
 
     EditText dateInput;
     EditText venueInput;
@@ -95,6 +102,23 @@ public class WallFragment extends Fragment {
         newSend = view.findViewById(R.id.new_send_btn);
         newMsgLayout = view.findViewById(R.id.new_msg_view);
         dateInput = view.findViewById(R.id.msg_date);
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, day);
+                updateLabel();
+            }
+        };
+        dateInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(getContext(), date, myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
         venueInput = view.findViewById(R.id.msg_place);
         descriptionInput = view.findViewById(R.id.msg_description);
         cx = getActivity().getApplicationContext();
@@ -186,7 +210,7 @@ public class WallFragment extends Fragment {
 
     private void writeNewMessage(final String date, final String venue, final String description) {
         final String uid = user.getUid();
-        final String uemail = user.getEmail();
+        final String username;
         Query query = FirebaseDatabase.getInstance()
                 .getReference("users");
 //                .child("users").child(uid);
@@ -200,18 +224,19 @@ public class WallFragment extends Fragment {
                                   while (iter.hasNext()){
                                       DataSnapshot snap = iter.next();
                                       Long picture = (Long)(snap.child("profilePic").getValue());
+                                      String username = snap.child("username").getValue().toString();
                                       Integer picIndex = picture != null ? picture.intValue() : null;
                                       Log.i("Wall picindex in new:", String.valueOf(picIndex));
                                       if (picIndex<1 || picIndex >9){
                                           picIndex = 1;
                                           if (validateForm()) {
-                                              Message message = new Message(uid, picIndex, uemail, date, venue, description);
+                                              Message message = new Message(uid, picIndex, username, date, venue, description);
                                               mDatabase.child("messages").push().setValue(message);
                                               mDatabase.child("user_messages" + uid).push().setValue(message);
                                           }
                                       }else {
                                           if (validateForm()) {
-                                              Message message = new Message(uid, picIndex, uemail, date, venue, description);
+                                              Message message = new Message(uid, picIndex, username, date, venue, description);
                                               mDatabase.child("messages").push().setValue(message);
                                               mDatabase.child("user_messages" + uid).push().setValue(message);
                                           }
@@ -403,6 +428,15 @@ public class WallFragment extends Fragment {
             }
         };
         rv.setAdapter(adapter);
+    }
+
+    private void updateLabel(){
+        String myformat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myformat, Locale.US);
+
+        dateInput.setText(sdf.format(myCalendar.getTime()));
+        date = dateInput.getText().toString().trim();
+
     }
 
 
