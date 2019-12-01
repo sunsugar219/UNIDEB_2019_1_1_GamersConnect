@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -132,6 +133,39 @@ public class EditProfileFragment extends Fragment{
                 DatabaseReference actUser = mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 Log.i("avatarButton: ", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getUid()));
                 actUser.child("profilePic").setValue(pic.get("profilePic"));
+            }
+        });
+        nameChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = view.findViewById(R.id.editText_profile_personName);
+                if(et.getText().toString() !=""){
+                DatabaseReference actUser = mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                Log.i("avatarButton: ", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                actUser.child("username").setValue(et.getText().toString());
+                }
+            }
+        });
+        emailChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = view.findViewById(R.id.editText_email_edit_profile);
+                if (et.getText().toString() != "") {
+                    DatabaseReference actUser = mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    Log.i("avatarButton: ", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                    actUser.child("email").setValue(et.getText().toString());
+                }
+            }
+        });
+        pwdChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = view.findViewById(R.id.editText_pwd_change);
+                if (et.getText().toString() != "") {
+                    DatabaseReference actUser = mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    Log.i("avatarButton: ", String.valueOf(FirebaseAuth.getInstance().getCurrentUser().getUid()));
+                    actUser.child("password").setValue(et.getText().toString());
+                }
             }
         });
 
