@@ -8,24 +8,24 @@
     tools:context=".UI.ContactsFragment">
 
     <LinearLayout
-        android:id="@+id/new_msg_view"
+android:id="@+id/contactLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone">
-
-
         <EditText
-            android:id="@+id/msg_date"
+
+            android:id="@+id/contact_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:hint="@string/expected_date"
             android:layout_marginTop="@dimen/vertical_margin"
             android:layout_marginBottom="@dimen/vertical_margin"
             android:layout_marginStart="@dimen/horizontal_margin"
             android:layout_marginEnd="@dimen/horizontal_margin"/>
-    </LinearLayout>
+
+
+</LinearLayout>
 
     <Button
         android:id="@+id/search_contact_btn"

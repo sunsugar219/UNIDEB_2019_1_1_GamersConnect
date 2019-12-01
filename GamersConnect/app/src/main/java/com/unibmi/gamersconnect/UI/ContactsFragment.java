@@ -17,9 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -33,30 +35,32 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.unibmi.gamersconnect.R;
+import com.unibmi.gamersconnect.database.Contact;
+import com.unibmi.gamersconnect.database.Message;
 import com.unibmi.gamersconnect.database.User;
+
+import java.util.Iterator;
 
 public class ContactsFragment extends Fragment {
     Context cx;
     RecyclerView rv;
-    boolean isNew;
+    boolean search;
 
     Button searchContact;
 
-    View newMSGLayout;
 
     private DatabaseReference mDatabase;
     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private LinearLayoutManager linearLayoutManager;
     private FirebaseRecyclerAdapter adapter;
-
     public ContactsFragment() {
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        isNew = true;
+        search = true;
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         return inflater.inflate(R.layout.fragment_contacts, container, false);
@@ -75,7 +79,12 @@ public class ContactsFragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         rv = view.findViewById(R.id.recyclerviewContacts);
         rv.setLayoutManager(linearLayoutManager);
-
+        ((Button)view.findViewById(R.id.search_contact_btn)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchOrFollow();
+            }
+        });
 
         fetch();
 
@@ -116,58 +125,53 @@ public class ContactsFragment extends Fragment {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public LinearLayout root;
-        ImageView mAuthorImage;
-        TextView mAuthorText, mUserVenue, mUserDate, mUserDescription;
+        ImageView mContactImage;
+        TextView mContactText;
 
         public ViewHolder(View itemView) {
             super(itemView);
             root = itemView.findViewById(R.id.list_item_layout_contacts);
-            mAuthorImage = itemView.findViewById(R.id.author_image_in_list);
-            mAuthorText = itemView.findViewById(R.id.author_text_in_list);
-           /* mUserVenue = itemView.findViewById(R.id.author_text_in_list);
-            muserDate = itemView.findViewById(R.id.user_date);
-            muserDescription = itemView.findViewById(R.id.user_description);*/
+            mContactImage = itemView.findViewById(R.id.contact_image_in_list);
+            mContactText = itemView.findViewById(R.id.contact_text_in_list);
+
 
         }
 
         public void setImgContact(int imgIndex) {
             switch (imgIndex) {
                 case 1:
-                    mAuthorImage.setImageResource(R.drawable.pic1);
+                    mContactImage.setImageResource(R.drawable.pic1);
                     break;
                 case 2:
-                    mAuthorImage.setImageResource(R.drawable.pic2);
+                    mContactImage.setImageResource(R.drawable.pic2);
                     break;
                 case 3:
-                    mAuthorImage.setImageResource(R.drawable.pic3);
+                    mContactImage.setImageResource(R.drawable.pic3);
                     break;
                 case 4:
-                    mAuthorImage.setImageResource(R.drawable.pic4);
+                    mContactImage.setImageResource(R.drawable.pic4);
                     break;
                 case 5:
-                    mAuthorImage.setImageResource(R.drawable.pic5);
+                    mContactImage.setImageResource(R.drawable.pic5);
                     break;
                 case 6:
-                    mAuthorImage.setImageResource(R.drawable.pic6);
+                    mContactImage.setImageResource(R.drawable.pic6);
                     break;
                 case 7:
-                    mAuthorImage.setImageResource(R.drawable.pic7);
+                    mContactImage.setImageResource(R.drawable.pic7);
                     break;
                 case 8:
-                    mAuthorImage.setImageResource(R.drawable.pic8);
-                    break;
-                case 9:
-                    mAuthorImage.setImageResource(R.drawable.pic9);
+                    mContactImage.setImageResource(R.drawable.pic8);
                     break;
                 default:
-                    mAuthorImage.setImageResource(R.drawable.pic9);
+                    mContactImage.setImageResource(R.drawable.pic9);
                     break;
 
             }
         }
 
         public void setTxtContact(String string) {
-            mAuthorText.setText(string);
+            mContactText.setText(string);
         }
     }
 
@@ -177,6 +181,7 @@ public class ContactsFragment extends Fragment {
         @Override
         public void onStart() {
             super.onStart();
+            fetch();
             adapter.startListening();
 
         }
@@ -187,37 +192,83 @@ public class ContactsFragment extends Fragment {
             adapter.stopListening();
         }
 
-        private void fetch() {
-            Log.i("fetch: ", "right after start");
+        private void add(String follow){
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             final String uid = user.getUid();
+            if(follow!="") {
+                final Query query = FirebaseDatabase.getInstance().getReference().child("users").orderByChild("username").equalTo(follow);
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.exists()){
+                            String CUid = dataSnapshot.getChildren().iterator().next().getKey();
+                            Contact contact = new Contact(uid, CUid);
+                            mDatabase.child("contacts").push().setValue(contact);
+                        }
+                        else{
+                            Toast.makeText(cx, "Nincs ilyen felhasználó!", Toast.LENGTH_LONG).show();
+                        }
+                    }
 
-            //egyelőre csak a saját üziket mutatja, mivel a kontaktok még nincsenek készen
-            Query query = FirebaseDatabase.getInstance()
-                    .getReference()
-                    .child("users").child(uid);
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(cx,"Error!",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }
+        public void searchOrFollow(){
+            if(search){
+                this.getView().findViewById(R.id.contactLayout).setVisibility(getView().VISIBLE);
+                search = false;
+                ((Button) this.getView().findViewById(R.id.search_contact_btn)).setText("Follow");
+            }
+            else{
+                this.getView().findViewById(R.id.contactLayout).setVisibility(getView().GONE);
+                search = true;
+                String follow = ((EditText) this.getView().findViewById(R.id.contact_name)).getText().toString();
+                ((Button) this.getView().findViewById(R.id.search_contact_btn)).setText("Search");
+                add(follow);
+            }
+        }
+        private void fetch() {
+            Log.i("contact fetch: ", "right after start");
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            final String uid = user.getUid();
+            final String[] username = {""};
+            Query usernamequery = FirebaseDatabase.getInstance()
+                    .getReference("users");
+            usernamequery.equalTo(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChildren()){
+                            username[0] = dataSnapshot.child("username").getValue().toString();
+                        }
+                    }
 
-            FirebaseRecyclerOptions<User> options =
-                    new FirebaseRecyclerOptions.Builder<User>()
-                            .setQuery(query, new SnapshotParser<User>() {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            Query query = mDatabase.child("contact").orderByChild("user").equalTo(username[0]);
+
+            FirebaseRecyclerOptions<Contact> options =
+                    new FirebaseRecyclerOptions.Builder<Contact>()
+                            .setQuery(query, new SnapshotParser<Contact>() {
                                 @NonNull
                                 @Override
-                                public User parseSnapshot(@NonNull DataSnapshot snapshot) {
-                                    if (snapshot.child("picIndex").getValue() != null) {
-                                        return new User(snapshot.child("username").getValue().toString(),
-                                                Integer.valueOf(snapshot.child("picIndex").getValue().toString()));
-                                    } else {
-                                        return new User(snapshot.child("username").getValue().toString(), 9);
-
-                                    }
-
+                                public Contact parseSnapshot(@NonNull DataSnapshot snapshot) {
+                                    return new Contact(snapshot.child("uid").getValue().toString(),
+                                            snapshot.child("fid").getValue().toString());
                                 }
-                            })
+                                })
                             .build();
 
-            adapter = new FirebaseRecyclerAdapter<User, ContactsFragment.ViewHolder>(options) {
+            adapter = new FirebaseRecyclerAdapter<Contact, ViewHolder>(options) {
                 @Override
-                public ContactsFragment.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
                     View view = LayoutInflater.from(parent.getContext())
                             .inflate(R.layout.list_item_contact, parent, false);
 
@@ -226,9 +277,9 @@ public class ContactsFragment extends Fragment {
 
 
                 @Override
-                protected void onBindViewHolder(ContactsFragment.ViewHolder holder, final int position, User user) {
-                    holder.setImgContact(user.getProfilePic());
-                    holder.setTxtContact(user.getUsername());
+                protected void onBindViewHolder(ViewHolder holder, final int position, Contact contact) {
+                    holder.setTxtContact(contact.fid);
+                    holder.setImgContact(1);
 
                 }
             };

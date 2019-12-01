@@ -6,18 +6,20 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 public class Contact {
 
-    public String username;
-    public String email;
+    public String uid;
+    public String fid;
 
     public Contact() {
         // Default constructor required for calls to DataSnapshot.getValue(Contact.class)
     }
 
 
-    public Contact (String username, String email) {
-        this.username = username;
-        this.email = email;
+    public Contact (String username1, String username2) {
+        this.uid = username1;
+        this.fid= username2;
     }
+    public String getUid(){return uid;}
+    public String getFid(){return fid;}
 
 }
 
