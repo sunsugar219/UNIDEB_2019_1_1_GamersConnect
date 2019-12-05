@@ -109,11 +109,8 @@ Fizikai környezet
 -Fejlesztő eszközök
  A szoftver Android Studio 3.5-ben fogjuk fejleszteni.
  Adatok tárolása JSON-ben valósítjuk meg.
--Keretrendszer (pl. Spring)
 
-Absztrakt domain modell
--Domain specifikáció, fogalmak
--Absztrakt komponensek, ezek kapcsolatai
+
 
 Architekturális terv
 -Egy architekturális tervezési minta: 
