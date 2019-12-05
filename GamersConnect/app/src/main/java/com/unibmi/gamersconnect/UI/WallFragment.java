@@ -175,7 +175,7 @@ public class WallFragment extends Fragment {
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
-        mDatabase.child("user-messages"+uid).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("messages").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Message message = dataSnapshot.getValue(Message.class);
@@ -225,22 +225,7 @@ public class WallFragment extends Fragment {
                                       DataSnapshot snap = iter.next();
                                       Long picture = (Long)(snap.child("profilePic").getValue());
                                       String username = snap.child("username").getValue().toString();
-                                      Integer picIndex = picture != null ? picture.intValue() : null;
-                                      Log.i("Wall picindex in new:", String.valueOf(picIndex));
-                                      if (picIndex<1 || picIndex >9){
-                                          picIndex = 1;
-                                          if (validateForm()) {
-                                              Message message = new Message(uid, picIndex, username, date, venue, description);
-                                              mDatabase.child("messages").push().setValue(message);
-                                              mDatabase.child("user_messages" + uid).push().setValue(message);
-                                          }
-                                      }else {
-                                          if (validateForm()) {
-                                              Message message = new Message(uid, picIndex, username, date, venue, description);
-                                              mDatabase.child("messages").push().setValue(message);
-                                              mDatabase.child("user_messages" + uid).push().setValue(message);
-                                          }
-                                      }
+                                      
                                   }
                               }
                           }
@@ -374,14 +359,13 @@ public class WallFragment extends Fragment {
     }
 
     private void fetch() {
-        Log.i("fetch: ", "right after start");
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String uid = user.getUid();
 
         //egyelőre csak a saját üziket mutatja, mivel a kontaktok még nincsenek készen
         Query query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("user_messages" + uid);
+                .child("messages");
 
         FirebaseRecyclerOptions<Message> options =
                 new FirebaseRecyclerOptions.Builder<Message>()
@@ -440,5 +424,9 @@ public class WallFragment extends Fragment {
     }
 
 
+    public String getUserID(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        return user.getUid();
+    }
 }
 
