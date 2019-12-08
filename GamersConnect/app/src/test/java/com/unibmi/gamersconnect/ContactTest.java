@@ -4,7 +4,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.unibmi.gamersconnect.database.Message;
+import com.unibmi.gamersconnect.database.Contact;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,16 +22,10 @@ import static org.mockito.Matchers.any;
 import static org.powermock.api.mockito.PowerMockito.doAnswer;
 import static org.powermock.api.mockito.PowerMockito.when;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(PowerMockRunner.class)
 @PowerMockRunnerDelegate(JUnit4.class)
-@PrepareForTest({FirebaseDatabase.class})
-public class WallUnitTest {
-
+@PrepareForTest({ FirebaseDatabase.class})
+public class ContactTest {
     private DatabaseReference mockedDatabaseReference;
 
     @Before
@@ -46,7 +40,7 @@ public class WallUnitTest {
     }
 
     @Test
-    public void getSignedInUserIDTest() {
+    public void getUserIDTest() {
         when(mockedDatabaseReference.child("users")).thenReturn(mockedDatabaseReference);
 
         doAnswer(new Answer<Void>() {
@@ -64,8 +58,7 @@ public class WallUnitTest {
             }
         }).when(mockedDatabaseReference).addListenerForSingleValueEvent(any(ValueEventListener.class));
 
-        new Message().getUid();
+        new Contact().getUid();
 
     }
-
 }
