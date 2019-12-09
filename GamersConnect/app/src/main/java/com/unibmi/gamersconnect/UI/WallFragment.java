@@ -225,6 +225,22 @@ public class WallFragment extends Fragment {
                                       DataSnapshot snap = iter.next();
                                       Long picture = (Long)(snap.child("profilePic").getValue());
                                       String username = snap.child("username").getValue().toString();
+                                      Integer picIndex = picture != null ? picture.intValue() : null;
+                                      Log.i("Wall picindex in new:", String.valueOf(picIndex));
+                                      if (picIndex<1 || picIndex >9){
+                                          picIndex = 1;
+                                          if (validateForm()) {
+                                              Message message = new Message(uid, picIndex, username, date, venue, description);
+                                              mDatabase.child("messages").push().setValue(message);
+                                              mDatabase.child("user_messages" + uid).push().setValue(message);
+                                          }
+                                      }else {
+                                          if (validateForm()) {
+                                              Message message = new Message(uid, picIndex, username, date, venue, description);
+                                              mDatabase.child("messages").push().setValue(message);
+                                              mDatabase.child("user_messages" + uid).push().setValue(message);
+                                          }
+                                      }
                                       
                                   }
                               }
